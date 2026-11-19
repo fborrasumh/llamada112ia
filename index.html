@@ -445,6 +445,8 @@ table{border-collapse:collapse;width:100%;font-size:13.8px}th{background:var(--p
 .ll-check li.ll-si .ll-m{background:var(--forjado-suave);color:#0B5A4E}.ll-check li.ll-medio .ll-m{background:#FFF1D6;color:#7A4B00}.ll-check li.ll-no .ll-m{background:var(--brasa-suave);color:var(--aviso)}
 
 @media(max-width:600px){.ll-phone{padding:16px 16px 14px;border-radius:22px}.ll-reloj{font-size:38px;margin:4px 0 8px}.ll-mic{width:84px;height:84px}.ll-mic .i{width:36px;height:36px}.ll-micTxt{margin-top:8px}.ll-oigo{min-height:22px}.ll-dir b{font-size:18px}}
+.ll-dur{margin:4px 0 0;font:700 20px var(--display)}
+.ll-msg.desa{align-self:center;background:#FFF1D6;border:1.5px dashed #C98200;font-weight:600}
 </style></head>
 <body>
 <svg style="display:none" aria-hidden="true">
@@ -517,7 +519,7 @@ table{border-collapse:collapse;width:100%;font-size:13.8px}th{background:var(--p
 <section class="screen" data-step="0">
   <div class="hero">
     <p class="eyebrow" data-i18n="hero.eyebrow">Simulador de RCP guiada por teléfono · Universidad Miguel Hernández de Elche</p>
-    <h1 data-i18n="hero.h1">Llama al 112 <em>sin soltar el maniquí</em></h1>
+    <h1 data-i18n="hero.h1">Llamar al 112 <em>con manos libres</em> (móvil)</h1>
     <p class="lede" data-i18n="hero.lede">Di «comenzamos», suena la llamada y un operador simulado te guía mientras haces las compresiones. Todo por voz, sin tocar el teclado. Al colgar, el código te dice qué hiciste bien y cuánto tardaste.</p>
     <div class="actions"><button class="btn btn-primary btn-big" id="btnStart" type="button"><svg class="i"><use href="#i-play"/></svg><span data-i18n="s.empezar">Empezar</span></button><button class="btn btn-ghost btn-big" id="btnEjemplo" type="button"><svg class="i"><use href="#i-eye"/></svg><span data-i18n="s.ejemplo">Ver un ejemplo</span></button></div>
     <p class="fa-inicio" id="inicioProj"></p>
@@ -528,7 +530,7 @@ table{border-collapse:collapse;width:100%;font-size:13.8px}th{background:var(--p
   </div>
   <h2 class="sec-title" data-i18n="Cómo funciona">Cómo funciona</h2>
   <div class="journey" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
-    <div class="jstop" style="--c:#6B4FD8"><span class="jn">1</span><div class="ji"><svg class="i"><use href="#i-grid"/></svg></div><b data-i18n="s.j1b">Eliges el escenario</b><span data-i18n="s.j1s">En casa, en un polideportivo con desfibrilador o en la calle con boqueadas.</span></div>
+    <div class="jstop" style="--c:#6B4FD8"><span class="jn">1</span><div class="ji"><svg class="i"><use href="#i-grid"/></svg></div><b data-i18n="s.j1b">Eliges el escenario</b><span data-i18n="s.j1s">En el domicilio o en un polideportivo con DESA. Eres un ciudadano formado en soporte vital básico con DESA.</span></div>
     <div class="jstop" style="--c:#E4572E"><span class="jn">2</span><div class="ji"><svg class="i"><use href="#i-mic"/></svg></div><b data-i18n="s.j2b">Llamas con la voz</b><span data-i18n="s.j2s">Di «comenzamos» y habla con el operador mientras reanimas al maniquí. Sin teclado.</span></div>
     <div class="jstop" style="--c:#0E8C7A"><span class="jn">3</span><div class="ji"><svg class="i"><use href="#i-check"/></svg></div><b data-i18n="s.j3b">Recibes el informe</b><span data-i18n="s.j3s">Qué dijiste, qué faltó y cuánto tardaste en reconocer la parada y en empezar.</span></div>
   </div>
@@ -546,13 +548,13 @@ table{border-collapse:collapse;width:100%;font-size:13.8px}th{background:var(--p
   <div class="card"><h3 data-i18n="Escenario">Escenario</h3><div class="ll-escs" id="escs"></div></div>
   <div class="card"><h3 data-i18n="Ajustes">Ajustes</h3>
     <div class="grid2">
-      <div class="field"><label for="selDur" data-i18n="Duración de la llamada">Duración de la llamada</label><select id="selDur"></select><p class="help" data-i18n="s.dur.help">La ambulancia «llega» al cumplirse este tiempo. Mínimo, 2 minutos.</p></div>
+      <div class="field"><span class="ll-lab" data-i18n="Duración de la llamada">Duración de la llamada</span><p class="ll-dur" data-i18n="3 minutos">3 minutos</p><p class="help" data-i18n="s.dur.help">La ambulancia «llega» a los 3 minutos de descolgar el operador.</p></div>
       <div class="field"><span class="ll-lab" data-i18n="Operador">Operador</span><div class="tabs" id="segModo"><button type="button" data-modo="guion" data-i18n="Guion (sin IA)">Guion (sin IA)</button><button type="button" data-modo="ia" data-i18n="Con IA (tu clave)">Con IA (tu clave)</button></div><p class="help" id="modoHelp"></p></div>
       <div class="field"><label for="selVoz" data-i18n="Voz del operador">Voz del operador</label><select id="selVoz"></select><div class="actions" style="margin-top:8px"><button class="btn btn-ghost btn-sm" id="btnProbarVoz" type="button"><svg class="i"><use href="#i-vol"/></svg><span data-i18n="Probar la voz">Probar la voz</span></button></div></div>
       <div class="field"><span class="ll-lab" data-i18n="Ritmo">Ritmo</span><label class="fa-chk"><input type="checkbox" id="chkMetro"> <span data-i18n="s.metro">Metrónomo a 110 por minuto durante las compresiones</span></label></div>
     </div></div>
   <div class="card"><h3 data-i18n="Así será la llamada">Así será la llamada</h3><ol class="ll-pasos" data-i18n="s.pasos">
-<li>Pulsa «Preparar la llamada» y permite el micrófono. Es el único toque: a partir de ahí, todo es por voz.</li><li>Ponte de rodillas junto al maniquí y di en voz alta <b>«comenzamos»</b>.</li><li>Suena el tono, contesta el operador del 112 y te guía. Habla claro; mientras él habla, el micrófono se pausa.</li><li>Al llegar la ambulancia termina la llamada y ves tu informe. Para acabar antes, di <b>«terminar la simulación»</b>.</li></ol>
+<li>Pulsa «Preparar la llamada» y permite el micrófono. Es el único toque: a partir de ahí, todo es por voz.</li><li>Ponte de rodillas junto al maniquí y di en voz alta <b>«comenzamos»</b>.</li><li>Suena el tono, contesta el operador del 112 y te guía. Habla claro; mientras él habla, el micrófono se pausa.</li><li>En el polideportivo, cuando el DESA pida la descarga, di <b>«¡apartaos!»</b>, comprueba que nadie toca a la víctima y di <b>«descarga»</b>.</li><li>Al llegar la ambulancia termina la llamada y ves tu informe. Para acabar antes, di <b>«terminar la simulación»</b>.</li></ol>
     <div class="actions"><button class="btn btn-primary btn-big" id="btnPreparar" type="button"><svg class="i"><use href="#i-mic"/></svg><span data-i18n="Preparar la llamada">Preparar la llamada</span></button></div></div>
 </section>
 
@@ -1348,17 +1350,19 @@ async function wordDeMarkdown(md, {titulo = '', subtitulo = '', pie = '', kicker
 const csvq = v => { const s = String(v ?? ''); return /[";\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
 const csvDe = (cab, filas) => '\ufeff' + [cab, ...filas].map(f => f.map(csvq).join(';')).join('\r\n');
 
-/* ══ Diccionarios de la app (español = idioma de origen, ya está en el HTML y en el JS). Valores del HTML pueden llevar etiquetas; nunca datos de la persona. ══ */
+/* ══ Diccionarios de la app (español = idioma de origen, ya está en el HTML y en el JS). ══ */
 const I18N = {
   en: {
-    'title': "Llamada112IA · Train the 112 call while you resuscitate, by voice only",
-    'hero.eyebrow': "Telephone-guided CPR simulator · Miguel Hernández University of Elche", 'hero.h1': "Call 112 <em>without letting go of the manikin</em>", 'hero.lede': "Say “let's begin”, the call rings and a simulated call-taker guides you while you do chest compressions. All by voice, without touching the keyboard. When you hang up, the code tells you what you did well and how long it took.",
+    "title": "Llamada112IA · Train the 112 call while you resuscitate, by voice only",
+    "hero.eyebrow": "Telephone-guided CPR simulator · Miguel Hernández University of Elche",
+    "hero.h1": "Call 112 <em>hands-free</em> (mobile)",
+    "hero.lede": "Say “let's begin”, the call rings and a simulated call-taker guides you while you do chest compressions. All by voice, without touching the keyboard. When you hang up, the code tells you what you did well and how long it took.",
     "s.empezar": "Start",
     "s.ejemplo": "See an example",
     "Descargar": "Download",
     "Resultado": "Result",
     "s.j1b": "You choose the scenario",
-    "s.j1s": "At home, at a sports centre with a defibrillator, or in the street with gasping.",
+    "s.j1s": "At home or at a sports centre with an AED. You are a citizen trained in basic life support with an AED.",
     "s.j2b": "You call by voice",
     "s.j2s": "Say “let's begin” and talk to the call-taker while you resuscitate the manikin. No keyboard.",
     "s.j3b": "You get the report",
@@ -1372,7 +1376,7 @@ const I18N = {
     "Escenario": "Scenario",
     "Ajustes": "Settings",
     "Duración de la llamada": "Call duration",
-    "s.dur.help": "The ambulance “arrives” when this time is up. Minimum, 2 minutes.",
+    "s.dur.help": "The ambulance “arrives” 3 minutes after the call-taker answers.",
     "Operador": "Call-taker",
     "Guion (sin IA)": "Script (no AI)",
     "Con IA (tu clave)": "With AI (your key)",
@@ -1381,7 +1385,7 @@ const I18N = {
     "Ritmo": "Rhythm",
     "s.metro": "Metronome at 110 per minute during compressions",
     "Así será la llamada": "How the call works",
-    "s.pasos": "<li>Press “Prepare the call” and allow the microphone. It is the only tap: from then on, everything is by voice.</li><li>Kneel next to the manikin and say out loud <b>“let's begin”</b>.</li><li>The phone rings, the 112 call-taker answers and guides you. Speak clearly; while they talk, the microphone is paused.</li><li>When the ambulance arrives the call ends and you see your report. To finish earlier, say <b>“end the simulation”</b>.</li>",
+    "s.pasos": "<li>Press “Prepare the call” and allow the microphone. It is the only tap: from then on, everything is by voice.</li><li>Kneel next to the manikin and say out loud <b>“let's begin”</b>.</li><li>The phone rings, the 112 call-taker answers and guides you. Speak clearly; while they talk, the microphone is paused.</li><li>At the sports centre, when the AED asks for the shock, say <b>“stand clear!”</b>, check that nobody is touching the patient and say <b>“shock”</b>.</li><li>When the ambulance arrives the call ends and you see your report. To finish earlier, say <b>“end the simulation”</b>.</li>",
     "Preparar la llamada": "Prepare the call",
     "Colgar": "Hang up",
     "Metrónomo": "Metronome",
@@ -1409,7 +1413,6 @@ const I18N = {
     "Volver al inicio": "Back to start",
     "Descarga el informe o repite la llamada.": "Download the report or repeat the call.",
     "¿Qué hace?": "What does it do?",
-    "Simula la llamada al 112 ante una parada cardiorrespiratoria. Un operador te guía por voz mientras haces compresiones en un maniquí y, al terminar, el código evalúa lo que dijiste y cuánto tardaste.": "It simulates the 112 call for a cardiac arrest. A call-taker guides you by voice while you do compressions on a manikin and, at the end, the code assesses what you said and how long you took.",
     "Manos libres": "Hands-free",
     "Solo hay que tocar la pantalla una vez, en «Preparar la llamada», porque el navegador exige un toque para usar el micrófono y el sonido. Después, di «comenzamos» para llamar y «terminar la simulación» para acabar antes.": "You only need to touch the screen once, on “Prepare the call”, because the browser requires a tap to use the microphone and sound. Then say “let's begin” to call and “end the simulation” to finish earlier.",
     "Turnos de palabra": "Taking turns",
@@ -1417,9 +1420,7 @@ const I18N = {
     "Navegador": "Browser",
     "El reconocimiento de voz funciona en Chrome y Edge (escritorio y Android). Safari lo admite de forma irregular y Firefox no lo admite: en ese caso puedes practicar escribiendo.": "Speech recognition works in Chrome and Edge (desktop and Android). Safari supports it unevenly and Firefox does not support it: in that case you can practise by typing.",
     "Operador de guion o con IA": "Scripted or AI call-taker",
-    "Sin clave, el operador sigue un guion basado en el protocolo de RCP guiada por teléfono: corrige si la dirección está incompleta, insiste si dudas y te anima a no parar. Con tu clave de IA, las respuestas las redacta la IA con el mismo protocolo; los recordatorios periódicos y el final siguen siendo del guion, para controlar el tiempo.": "Without a key, the call-taker follows a script based on the telephone-guided CPR protocol: it corrects an incomplete address, insists if you hesitate and encourages you not to stop. With your AI key, the answers are written by the AI with the same protocol; the periodic reminders and the ending still come from the script, to keep control of the time.",
     "Cómo se evalúa": "How it is assessed",
-    "Lo hace siempre el código, con las palabras que reconoce el navegador: si explicaste qué pasa, si diste la dirección completa, si confirmaste que no responde y no respira con normalidad, y los tiempos hasta reconocer la parada y hasta la primera compresión. Los objetivos de referencia son los de la American Heart Association para la RCP guiada por teléfono: reconocer la parada en menos de 90 s y primera compresión en menos de 150 s.": "Always by the code, using the words the browser recognises: whether you explained what is happening, gave the full address, confirmed that the person is not responding and not breathing normally, and the times to recognising the arrest and to the first compression. The reference targets are the American Heart Association ones for telephone-guided CPR: recognise the arrest in under 90 s and first compression in under 150 s.",
     "Límites": "Limits",
     "No mide la profundidad ni el ritmo de las compresiones, ni la posición de las manos: para eso hace falta un maniquí con retroalimentación o un instructor. El reconocimiento de voz se equivoca a veces; revisa la transcripción del informe. No sustituye un curso de soporte vital básico.": "It does not measure the depth or rate of compressions, or hand position: that needs a feedback manikin or an instructor. Speech recognition sometimes gets things wrong; check the transcript in the report. It does not replace a basic life support course.",
     "Privacidad": "Privacy",
@@ -1434,13 +1435,11 @@ const I18N = {
     "Ejemplo de demostración: una llamada simulada, sin micrófono ni IA": "Demonstration example: a simulated call, without microphone or AI",
     "Este navegador no reconoce la voz. Usa Chrome o Edge para la llamada manos libres; aquí podrás practicar escribiendo lo que dirías.": "This browser does not recognise speech. Use Chrome or Edge for the hands-free call; here you can practise by typing what you would say.",
     "Este navegador no puede leer en voz alta: verás lo que dice el operador, pero no lo oirás.": "This browser cannot read aloud: you will see what the call-taker says, but you will not hear it.",
-    "{0} minutos": "{0} minutes",
     "Usa tu clave ({0}). Cada respuesta tarda uno o dos segundos y tiene un pequeño coste. Elige un modelo rápido.": "It uses your key ({0}). Each answer takes one or two seconds and has a small cost. Choose a fast model.",
     "Funciona sin clave y sin coste. Es el modo recomendado para empezar.": "It works without a key and at no cost. It is the recommended mode to start with.",
     "Voz del sistema": "System voice",
     "En cada turno se enviará a {0} lo que digas, ya transcrito, junto con estas instrucciones y la conversación hasta ese momento. No digas datos personales reales.": "On each turn, what you say, already transcribed, will be sent to {0}, together with these instructions and the conversation so far. Do not say real personal data.",
     "Estudiante": "Student",
-    "Mi padre se ha desplomado y no responde": "My father has collapsed and is not responding",
     "No hay acceso al micrófono ({0}). Revisa los permisos del navegador o escribe lo que dirías.": "No access to the microphone ({0}). Check the browser permissions or type what you would say.",
     "Llamada interrumpida: no se ha guardado.": "Call interrupted: it has not been saved.",
     "Te he oído: «{0}». Para llamar, di «comenzamos».": "I heard you: “{0}”. To call, say “let's begin”.",
@@ -1467,14 +1466,6 @@ const I18N = {
     "Dirección completa a la primera: calle, número y población": "Full address first time: street, number and town",
     "Dirección completa, pero en varias respuestas ({0}): dila entera de una vez": "Full address, but over several answers ({0}): give it all at once",
     "Dirección incompleta: faltó {0}": "Incomplete address: missing {0}",
-    "Confirmó que no responde": "Confirmed that the person is not responding",
-    "Dudó si respondía: compruébalo hablándole fuerte y sacudiéndole los hombros": "Hesitated about whether they were responding: check by talking loudly and shaking their shoulders",
-    "No llegó a confirmar si respondía": "Did not confirm whether they were responding",
-    "Reconoció que no respira con normalidad y describió una respiración anómala": "Recognised that they are not breathing normally and described abnormal breathing",
-    "Reconoció que no respira con normalidad": "Recognised that they are not breathing normally",
-    "Dijo que respiraba: las boqueadas no son una respiración normal": "Said they were breathing: gasping is not normal breathing",
-    "Dudó sobre la respiración": "Hesitated about the breathing",
-    "No llegó a confirmar si respiraba con normalidad": "Did not confirm whether they were breathing normally",
     "No se llegó a reconocer la parada": "The arrest was not recognised",
     "Parada reconocida a los {0} (objetivo: menos de {1})": "Arrest recognised at {0} (target: under {1})",
     "No se detectó el inicio de las compresiones": "The start of compressions was not detected",
@@ -1482,12 +1473,6 @@ const I18N = {
     "No dijo en ningún momento que paraba las compresiones": "Never said they were stopping compressions",
     "Dijo que paraba las compresiones (veces: {0}): no pares hasta que lleguen los sanitarios": "Said they were stopping compressions (times: {0}): do not stop until the paramedics arrive",
     "No hay compresiones registradas": "No compressions recorded",
-    "Avisó de la llegada del desfibrilador ({0} s después)": "Reported the defibrillator's arrival ({0} s later)",
-    "No avisó de que había llegado el desfibrilador: el operador tuvo que preguntarlo": "Did not report that the defibrillator had arrived: the call-taker had to ask",
-    "El desfibrilador no llegó a aparecer (la llamada terminó antes)": "The defibrillator did not appear (the call ended earlier)",
-    "Avisó de que alguien podía relevarle": "Reported that someone could take over",
-    "No avisó de que había llegado alguien que podía relevarle": "Did not report that someone had arrived who could take over",
-    "El relevo no llegó a aparecer (la llamada terminó antes)": "The helper did not appear (the call ended earlier)",
     "Respondió bien a «¿ha empezado a respirar con normalidad?» durante la reanimación": "Answered “have they started breathing normally?” correctly during resuscitation",
     "Dijo que respiraba con normalidad durante la reanimación (veces: {0})": "Said they were breathing normally during resuscitation (times: {0})",
     "Contó en voz alta: ayuda a mantener el ritmo": "Counted out loud: it helps keep the rhythm",
@@ -1516,17 +1501,42 @@ const I18N = {
     "texto": "text",
     "fase": "phase",
     "operador": "call-taker",
-    "estudiante": "student"
+    "estudiante": "student",
+    "DESA": "AED",
+    "Mi padre está en el suelo, no responde y no respira": "My father is on the floor, not responding and not breathing",
+    "Informó de que no responde y no respira": "Reported that the person is not responding and not breathing",
+    "Dijo que no responde, pero no que no respira: informa de las dos cosas": "Said they are not responding, but not that they are not breathing: report both",
+    "Dijo que no respira, pero no que no responde: informa de las dos cosas": "Said they are not breathing, but not that they are not responding: report both",
+    "No informó de que no responde ni de que no respira": "Did not report that the person is not responding or not breathing",
+    "Avisó de la llegada del DESA ({0} s después)": "Reported the AED's arrival ({0} s later)",
+    "No avisó de que había llegado el DESA: el operador tuvo que preguntarlo": "Did not report that the AED had arrived: the call-taker had to ask",
+    "El DESA no llegó a aparecer (la llamada terminó antes)": "The AED did not appear (the call ended earlier)",
+    "Antes de descargar, ordenó apartarse y comprobó que nadie tocaba a la víctima": "Before the shock, told everyone to stand clear and checked that nobody was touching the patient",
+    "Intentó descargar sin la medida de seguridad (veces: {0}): di «¡apartaos!» y comprueba que nadie toca a la víctima": "Tried to shock without the safety check (times: {0}): say “stand clear!” and check that nobody is touching the patient",
+    "No se llegó a la descarga del DESA": "The AED shock was not reached",
+    "Descarga administrada {0} s después de que la indicara el DESA": "Shock delivered {0} s after the AED advised it",
+    "El DESA indicó la descarga, pero no se llegó a administrar": "The AED advised a shock, but it was not delivered",
+    "El DESA no llegó a indicar la descarga (la llamada terminó antes)": "The AED did not get to advise a shock (the call ended earlier)",
+    "Abrió las puertas y volvió a las compresiones ({0} s)": "Opened the doors and went back to compressions ({0} s)",
+    "Abrió las puertas, pero el operador tuvo que recordárselo": "Opened the doors, but the call-taker had to remind them",
+    "No confirmó que hubiera abierto las puertas y vuelto a las compresiones": "Did not confirm opening the doors and going back to compressions",
+    "El aviso de abrir las puertas no llegó (la llamada terminó antes)": "The request to open the doors did not come (the call ended earlier)",
+    "3 minutos": "3 minutes",
+    "Simula la llamada al 112 ante una parada cardiorrespiratoria cuando quien llama es un ciudadano formado en soporte vital básico con DESA. El operador recoge el motivo y la dirección y pasa directamente a las compresiones torácicas; en el polideportivo, el DESA habla y pide la descarga; en el domicilio, el operador pide abrir las puertas antes de que llegue la ambulancia. Al terminar, el código evalúa lo que dijiste y cuánto tardaste.": "It simulates the 112 call for a cardiac arrest when the caller is a citizen trained in basic life support with an AED. The call-taker gets the reason and the address and goes straight to chest compressions; at the sports centre the AED speaks and asks for the shock; at home the call-taker asks you to open the doors before the ambulance arrives. At the end, the code assesses what you said and how long you took.",
+    "Sin clave, el operador sigue un guion de RCP guiada por teléfono para un reanimador formado: no pregunta por la consciencia, la respiración ni la vía aérea, corrige si la dirección está incompleta y te anima a no parar. Con tu clave de IA, las respuestas las redacta la IA con el mismo protocolo; la voz del DESA, el aviso de las puertas, los recordatorios periódicos y el final siguen siendo del guion, para controlar el tiempo.": "Without a key, the call-taker follows a telephone-guided CPR script for a trained rescuer: it does not ask about consciousness, breathing or the airway, corrects an incomplete address and encourages you not to stop. With your AI key, the answers are written by the AI with the same protocol; the AED voice, the request to open the doors, the periodic reminders and the ending still come from the script, to keep control of the time.",
+    "Lo hace siempre el código, con las palabras que reconoce el navegador: si explicaste qué pasa e informaste de que no responde y no respira, si diste la dirección completa, los tiempos hasta reconocer la parada y hasta la primera compresión, y si mantuviste las compresiones. Con el DESA, si ordenaste apartarse antes de descargar; en el domicilio, si abriste las puertas y volviste. Los objetivos de tiempo son los de la American Heart Association para la RCP guiada por teléfono: reconocer la parada en menos de 90 s y primera compresión en menos de 150 s.": "Always by the code, using the words the browser recognises: whether you explained what is happening and reported that the person is not responding and not breathing, gave the full address, the times to recognising the arrest and to the first compression, and whether you kept up compressions. With the AED, whether you told everyone to stand clear before the shock; at home, whether you opened the doors and came back. The time targets are the American Heart Association ones for telephone-guided CPR: recognise the arrest in under 90 s and first compression in under 150 s."
   },
   pt: {
-    'title': "Llamada112IA · Treine a chamada para o 112 enquanto reanima, só com a voz",
-    'hero.eyebrow': "Simulador de RCP guiada por telefone · Universidade Miguel Hernández de Elche", 'hero.h1': "Ligue para o 112 <em>sem largar o manequim</em>", 'hero.lede': "Diga «começamos», a chamada toca e um operador simulado guia-o enquanto faz as compressões. Tudo por voz, sem tocar no teclado. Ao desligar, o código diz-lhe o que fez bem e quanto tempo demorou.",
+    "title": "Llamada112IA · Treine a chamada para o 112 enquanto reanima, só com a voz",
+    "hero.eyebrow": "Simulador de RCP guiada por telefone · Universidade Miguel Hernández de Elche",
+    "hero.h1": "Ligar para o 112 <em>em mãos livres</em> (telemóvel)",
+    "hero.lede": "Diga «começamos», a chamada toca e um operador simulado guia-o enquanto faz as compressões. Tudo por voz, sem tocar no teclado. Ao desligar, o código diz-lhe o que fez bem e quanto tempo demorou.",
     "s.empezar": "Começar",
     "s.ejemplo": "Ver um exemplo",
     "Descargar": "Descarregar",
     "Resultado": "Resultado",
     "s.j1b": "Escolhe o cenário",
-    "s.j1s": "Em casa, num pavilhão com desfibrilhador ou na rua com respiração agónica.",
+    "s.j1s": "No domicílio ou num pavilhão com DAE. É um cidadão com formação em suporte básico de vida com DAE.",
     "s.j2b": "Liga com a voz",
     "s.j2s": "Diga «começamos» e fale com o operador enquanto reanima o manequim. Sem teclado.",
     "s.j3b": "Recebe o relatório",
@@ -1540,7 +1550,7 @@ const I18N = {
     "Escenario": "Cenário",
     "Ajustes": "Definições",
     "Duración de la llamada": "Duração da chamada",
-    "s.dur.help": "A ambulância «chega» quando este tempo se cumpre. Mínimo, 2 minutos.",
+    "s.dur.help": "A ambulância «chega» 3 minutos depois de o operador atender.",
     "Operador": "Operador",
     "Guion (sin IA)": "Guião (sem IA)",
     "Con IA (tu clave)": "Com IA (a sua chave)",
@@ -1549,7 +1559,7 @@ const I18N = {
     "Ritmo": "Ritmo",
     "s.metro": "Metrónomo a 110 por minuto durante as compressões",
     "Así será la llamada": "Como será a chamada",
-    "s.pasos": "<li>Prima «Preparar a chamada» e permita o microfone. É o único toque: a partir daí, tudo é por voz.</li><li>Ajoelhe-se junto ao manequim e diga em voz alta <b>«começamos»</b>.</li><li>Toca o sinal de chamada, o operador do 112 atende e guia-o. Fale com clareza; enquanto ele fala, o microfone fica em pausa.</li><li>Quando a ambulância chega a chamada termina e vê o seu relatório. Para acabar antes, diga <b>«terminar a simulação»</b>.</li>",
+    "s.pasos": "<li>Prima «Preparar a chamada» e permita o microfone. É o único toque: a partir daí, tudo é por voz.</li><li>Ajoelhe-se junto ao manequim e diga em voz alta <b>«começamos»</b>.</li><li>Toca o sinal de chamada, o operador do 112 atende e guia-o. Fale com clareza; enquanto ele fala, o microfone fica em pausa.</li><li>No pavilhão, quando o DAE pedir o choque, diga <b>«afastem-se!»</b>, confirme que ninguém toca na vítima e diga <b>«choque»</b>.</li><li>Quando a ambulância chega a chamada termina e vê o seu relatório. Para acabar antes, diga <b>«terminar a simulação»</b>.</li>",
     "Preparar la llamada": "Preparar a chamada",
     "Colgar": "Desligar",
     "Metrónomo": "Metrónomo",
@@ -1577,7 +1587,6 @@ const I18N = {
     "Volver al inicio": "Voltar ao início",
     "Descarga el informe o repite la llamada.": "Descarregue o relatório ou repita a chamada.",
     "¿Qué hace?": "O que faz?",
-    "Simula la llamada al 112 ante una parada cardiorrespiratoria. Un operador te guía por voz mientras haces compresiones en un maniquí y, al terminar, el código evalúa lo que dijiste y cuánto tardaste.": "Simula a chamada para o 112 perante uma paragem cardiorrespiratória. Um operador guia-o por voz enquanto faz compressões num manequim e, no fim, o código avalia o que disse e quanto tempo demorou.",
     "Manos libres": "Mãos livres",
     "Solo hay que tocar la pantalla una vez, en «Preparar la llamada», porque el navegador exige un toque para usar el micrófono y el sonido. Después, di «comenzamos» para llamar y «terminar la simulación» para acabar antes.": "Só é preciso tocar no ecrã uma vez, em «Preparar a chamada», porque o navegador exige um toque para usar o microfone e o som. Depois, diga «começamos» para ligar e «terminar a simulação» para acabar antes.",
     "Turnos de palabra": "Vez de falar",
@@ -1585,9 +1594,7 @@ const I18N = {
     "Navegador": "Navegador",
     "El reconocimiento de voz funciona en Chrome y Edge (escritorio y Android). Safari lo admite de forma irregular y Firefox no lo admite: en ese caso puedes practicar escribiendo.": "O reconhecimento de voz funciona no Chrome e no Edge (computador e Android). O Safari suporta-o de forma irregular e o Firefox não o suporta: nesse caso pode praticar escrevendo.",
     "Operador de guion o con IA": "Operador com guião ou com IA",
-    "Sin clave, el operador sigue un guion basado en el protocolo de RCP guiada por teléfono: corrige si la dirección está incompleta, insiste si dudas y te anima a no parar. Con tu clave de IA, las respuestas las redacta la IA con el mismo protocolo; los recordatorios periódicos y el final siguen siendo del guion, para controlar el tiempo.": "Sem chave, o operador segue um guião baseado no protocolo de RCP guiada por telefone: corrige se a morada estiver incompleta, insiste se hesitar e incentiva-o a não parar. Com a sua chave de IA, as respostas são redigidas pela IA com o mesmo protocolo; os lembretes periódicos e o final continuam a ser do guião, para controlar o tempo.",
     "Cómo se evalúa": "Como se avalia",
-    "Lo hace siempre el código, con las palabras que reconoce el navegador: si explicaste qué pasa, si diste la dirección completa, si confirmaste que no responde y no respira con normalidad, y los tiempos hasta reconocer la parada y hasta la primera compresión. Los objetivos de referencia son los de la American Heart Association para la RCP guiada por teléfono: reconocer la parada en menos de 90 s y primera compresión en menos de 150 s.": "Sempre pelo código, com as palavras que o navegador reconhece: se explicou o que se passa, se deu a morada completa, se confirmou que não responde e não respira normalmente, e os tempos até reconhecer a paragem e até à primeira compressão. Os objetivos de referência são os da American Heart Association para a RCP guiada por telefone: reconhecer a paragem em menos de 90 s e primeira compressão em menos de 150 s.",
     "Límites": "Limites",
     "No mide la profundidad ni el ritmo de las compresiones, ni la posición de las manos: para eso hace falta un maniquí con retroalimentación o un instructor. El reconocimiento de voz se equivoca a veces; revisa la transcripción del informe. No sustituye un curso de soporte vital básico.": "Não mede a profundidade nem o ritmo das compressões, nem a posição das mãos: para isso é preciso um manequim com feedback ou um instrutor. O reconhecimento de voz às vezes engana-se; reveja a transcrição do relatório. Não substitui um curso de suporte básico de vida.",
     "Privacidad": "Privacidade",
@@ -1602,13 +1609,11 @@ const I18N = {
     "Ejemplo de demostración: una llamada simulada, sin micrófono ni IA": "Exemplo de demonstração: uma chamada simulada, sem microfone nem IA",
     "Este navegador no reconoce la voz. Usa Chrome o Edge para la llamada manos libres; aquí podrás practicar escribiendo lo que dirías.": "Este navegador não reconhece a voz. Use o Chrome ou o Edge para a chamada mãos livres; aqui pode praticar escrevendo o que diria.",
     "Este navegador no puede leer en voz alta: verás lo que dice el operador, pero no lo oirás.": "Este navegador não consegue ler em voz alta: verá o que o operador diz, mas não o ouvirá.",
-    "{0} minutos": "{0} minutos",
     "Usa tu clave ({0}). Cada respuesta tarda uno o dos segundos y tiene un pequeño coste. Elige un modelo rápido.": "Usa a sua chave ({0}). Cada resposta demora um ou dois segundos e tem um pequeno custo. Escolha um modelo rápido.",
     "Funciona sin clave y sin coste. Es el modo recomendado para empezar.": "Funciona sem chave e sem custo. É o modo recomendado para começar.",
     "Voz del sistema": "Voz do sistema",
     "En cada turno se enviará a {0} lo que digas, ya transcrito, junto con estas instrucciones y la conversación hasta ese momento. No digas datos personales reales.": "Em cada vez, o que disser, já transcrito, será enviado para {0}, juntamente com estas instruções e a conversa até esse momento. Não diga dados pessoais reais.",
     "Estudiante": "Estudante",
-    "Mi padre se ha desplomado y no responde": "O meu pai caiu e não responde",
     "No hay acceso al micrófono ({0}). Revisa los permisos del navegador o escribe lo que dirías.": "Sem acesso ao microfone ({0}). Verifique as permissões do navegador ou escreva o que diria.",
     "Llamada interrumpida: no se ha guardado.": "Chamada interrompida: não foi guardada.",
     "Te he oído: «{0}». Para llamar, di «comenzamos».": "Ouvi: «{0}». Para ligar, diga «começamos».",
@@ -1635,14 +1640,6 @@ const I18N = {
     "Dirección completa a la primera: calle, número y población": "Morada completa à primeira: rua, número e localidade",
     "Dirección completa, pero en varias respuestas ({0}): dila entera de una vez": "Morada completa, mas em várias respostas ({0}): diga-a toda de uma vez",
     "Dirección incompleta: faltó {0}": "Morada incompleta: faltou {0}",
-    "Confirmó que no responde": "Confirmou que não responde",
-    "Dudó si respondía: compruébalo hablándole fuerte y sacudiéndole los hombros": "Hesitou sobre se respondia: verifique falando alto e abanando-lhe os ombros",
-    "No llegó a confirmar si respondía": "Não chegou a confirmar se respondia",
-    "Reconoció que no respira con normalidad y describió una respiración anómala": "Reconheceu que não respira normalmente e descreveu uma respiração anómala",
-    "Reconoció que no respira con normalidad": "Reconheceu que não respira normalmente",
-    "Dijo que respiraba: las boqueadas no son una respiración normal": "Disse que respirava: os arquejos não são uma respiração normal",
-    "Dudó sobre la respiración": "Hesitou sobre a respiração",
-    "No llegó a confirmar si respiraba con normalidad": "Não chegou a confirmar se respirava normalmente",
     "No se llegó a reconocer la parada": "A paragem não chegou a ser reconhecida",
     "Parada reconocida a los {0} (objetivo: menos de {1})": "Paragem reconhecida aos {0} (objetivo: menos de {1})",
     "No se detectó el inicio de las compresiones": "Não se detetou o início das compressões",
@@ -1650,12 +1647,6 @@ const I18N = {
     "No dijo en ningún momento que paraba las compresiones": "Nunca disse que parava as compressões",
     "Dijo que paraba las compresiones (veces: {0}): no pares hasta que lleguen los sanitarios": "Disse que parava as compressões (vezes: {0}): não pare até chegarem os profissionais de saúde",
     "No hay compresiones registradas": "Não há compressões registadas",
-    "Avisó de la llegada del desfibrilador ({0} s después)": "Avisou da chegada do desfibrilhador ({0} s depois)",
-    "No avisó de que había llegado el desfibrilador: el operador tuvo que preguntarlo": "Não avisou que o desfibrilhador tinha chegado: o operador teve de perguntar",
-    "El desfibrilador no llegó a aparecer (la llamada terminó antes)": "O desfibrilhador não chegou a aparecer (a chamada terminou antes)",
-    "Avisó de que alguien podía relevarle": "Avisou que alguém podia render-lhe",
-    "No avisó de que había llegado alguien que podía relevarle": "Não avisou que tinha chegado alguém que podia render-lhe",
-    "El relevo no llegó a aparecer (la llamada terminó antes)": "A ajuda não chegou a aparecer (a chamada terminou antes)",
     "Respondió bien a «¿ha empezado a respirar con normalidad?» durante la reanimación": "Respondeu bem a «começou a respirar normalmente?» durante a reanimação",
     "Dijo que respiraba con normalidad durante la reanimación (veces: {0})": "Disse que respirava normalmente durante a reanimação (vezes: {0})",
     "Contó en voz alta: ayuda a mantener el ritmo": "Contou em voz alta: ajuda a manter o ritmo",
@@ -1684,74 +1675,79 @@ const I18N = {
     "texto": "texto",
     "fase": "fase",
     "operador": "operador",
-    "estudiante": "estudante"
+    "estudiante": "estudante",
+    "DESA": "DAE",
+    "Mi padre está en el suelo, no responde y no respira": "O meu pai está no chão, não responde e não respira",
+    "Informó de que no responde y no respira": "Informou que não responde e não respira",
+    "Dijo que no responde, pero no que no respira: informa de las dos cosas": "Disse que não responde, mas não que não respira: informe as duas coisas",
+    "Dijo que no respira, pero no que no responde: informa de las dos cosas": "Disse que não respira, mas não que não responde: informe as duas coisas",
+    "No informó de que no responde ni de que no respira": "Não informou que não responde nem que não respira",
+    "Avisó de la llegada del DESA ({0} s después)": "Avisou da chegada do DAE ({0} s depois)",
+    "No avisó de que había llegado el DESA: el operador tuvo que preguntarlo": "Não avisou que o DAE tinha chegado: o operador teve de perguntar",
+    "El DESA no llegó a aparecer (la llamada terminó antes)": "O DAE não chegou a aparecer (a chamada terminou antes)",
+    "Antes de descargar, ordenó apartarse y comprobó que nadie tocaba a la víctima": "Antes do choque, mandou afastar e confirmou que ninguém tocava na vítima",
+    "Intentó descargar sin la medida de seguridad (veces: {0}): di «¡apartaos!» y comprueba que nadie toca a la víctima": "Tentou dar o choque sem a medida de segurança (vezes: {0}): diga «afastem-se!» e confirme que ninguém toca na vítima",
+    "No se llegó a la descarga del DESA": "Não se chegou ao choque do DAE",
+    "Descarga administrada {0} s después de que la indicara el DESA": "Choque administrado {0} s depois de o DAE o indicar",
+    "El DESA indicó la descarga, pero no se llegó a administrar": "O DAE indicou o choque, mas não chegou a ser administrado",
+    "El DESA no llegó a indicar la descarga (la llamada terminó antes)": "O DAE não chegou a indicar o choque (a chamada terminou antes)",
+    "Abrió las puertas y volvió a las compresiones ({0} s)": "Abriu as portas e voltou às compressões ({0} s)",
+    "Abrió las puertas, pero el operador tuvo que recordárselo": "Abriu as portas, mas o operador teve de lhe lembrar",
+    "No confirmó que hubiera abierto las puertas y vuelto a las compresiones": "Não confirmou que abriu as portas e voltou às compressões",
+    "El aviso de abrir las puertas no llegó (la llamada terminó antes)": "O pedido para abrir as portas não chegou (a chamada terminou antes)",
+    "3 minutos": "3 minutos",
+    "Simula la llamada al 112 ante una parada cardiorrespiratoria cuando quien llama es un ciudadano formado en soporte vital básico con DESA. El operador recoge el motivo y la dirección y pasa directamente a las compresiones torácicas; en el polideportivo, el DESA habla y pide la descarga; en el domicilio, el operador pide abrir las puertas antes de que llegue la ambulancia. Al terminar, el código evalúa lo que dijiste y cuánto tardaste.": "Simula a chamada para o 112 perante uma paragem cardiorrespiratória quando quem liga é um cidadão com formação em suporte básico de vida com DAE. O operador recolhe o motivo e a morada e passa diretamente às compressões torácicas; no pavilhão, o DAE fala e pede o choque; no domicílio, o operador pede para abrir as portas antes de a ambulância chegar. No fim, o código avalia o que disse e quanto tempo demorou.",
+    "Sin clave, el operador sigue un guion de RCP guiada por teléfono para un reanimador formado: no pregunta por la consciencia, la respiración ni la vía aérea, corrige si la dirección está incompleta y te anima a no parar. Con tu clave de IA, las respuestas las redacta la IA con el mismo protocolo; la voz del DESA, el aviso de las puertas, los recordatorios periódicos y el final siguen siendo del guion, para controlar el tiempo.": "Sem chave, o operador segue um guião de RCP guiada por telefone para um reanimador com formação: não pergunta pela consciência, pela respiração nem pela via aérea, corrige se a morada estiver incompleta e incentiva-o a não parar. Com a sua chave de IA, as respostas são redigidas pela IA com o mesmo protocolo; a voz do DAE, o pedido para abrir as portas, os lembretes periódicos e o final continuam a ser do guião, para controlar o tempo.",
+    "Lo hace siempre el código, con las palabras que reconoce el navegador: si explicaste qué pasa e informaste de que no responde y no respira, si diste la dirección completa, los tiempos hasta reconocer la parada y hasta la primera compresión, y si mantuviste las compresiones. Con el DESA, si ordenaste apartarse antes de descargar; en el domicilio, si abriste las puertas y volviste. Los objetivos de tiempo son los de la American Heart Association para la RCP guiada por teléfono: reconocer la parada en menos de 90 s y primera compresión en menos de 150 s.": "Sempre pelo código, com as palavras que o navegador reconhece: se explicou o que se passa e informou que não responde e não respira, se deu a morada completa, os tempos até reconhecer a paragem e até à primeira compressão, e se manteve as compressões. Com o DAE, se mandou afastar antes do choque; no domicílio, se abriu as portas e voltou. Os objetivos de tempo são os da American Heart Association para a RCP guiada por telefone: reconhecer a paragem em menos de 90 s e primeira compressão em menos de 150 s."
   }
 };
 
-/* ══ Escenarios, frases del operador y palabras clave (es / en / pt). Solo datos: la lógica está en motor.js. ══
+/* ══ Escenarios, frases del operador y del DESA, y palabras clave (es / en / pt). Solo datos: la lógica está en motor.js. ══
+   El reanimador es un ciudadano formado en soporte vital básico con DESA: ya ha valorado consciencia y respiración y ha abierto
+   la vía aérea, así que el operador no le pregunta por ello y pasa directo a las compresiones.
    Las direcciones son ficticias. «calle», «numero» y «ciudad» son las palabras que el código busca en lo que dice el estudiante. */
 const ESC = [
-  {id: 'casa', color: '#E4572E', icono: 'user',
-    eventos: [{id: 'relevo', tras: 70, palabras: 'relevo', respuesta: 'relevoInstr', pregunta: null}],
+  {id: 'casa', color: '#E4572E', icono: 'user', puerta: true, desa: false, eventos: [],
     txt: {
-      es: {titulo: 'En casa', breve: 'Tu padre se desploma en el salón. Estás solo con él.',
-        situacion: 'Tu padre, de 62 años, se ha desplomado en el salón mientras veía la televisión. Estás solo con él y tienes el móvil en altavoz.',
+      es: {titulo: 'Domicilio', breve: 'Tu padre se desploma en el salón y estás solo con él. Eres un ciudadano formado en técnicas de soporte vital básico con DESA.',
+        situacion: 'Tu padre, de 62 años, está tendido en el suelo, boca arriba, no se mueve y no responde a estímulos verbales y físicos. Estás solo con él, tienes el móvil en altavoz y estás formado en maniobras de soporte vital básico con DESA.',
         direccion: 'Calle Mayor, 14, 2.º B · Elche', calle: ['mayor'], numero: ['14', 'catorce'], ciudad: ['elche'],
-        ves: {inicio: 'Está tendido en el suelo, boca arriba.', consciencia: 'No responde aunque le gritas y le sacudes los hombros.', respiracion: 'No ves que el pecho se mueva: no respira.', compresiones: 'Sigue sin responder y sin respirar.'},
-        evento: {relevo: 'Tu pareja acaba de llegar a casa y puede relevarte. Díselo al operador.'}},
-      en: {titulo: 'At home', breve: 'Your father collapses in the living room. You are alone with him.',
-        situacion: 'Your father, 62, has collapsed in the living room while watching TV. You are alone with him and your phone is on speaker.',
+        ves: {inicio: 'No se mueve, no responde y no respira con normalidad.', compresiones: 'Sigue sin responder y sin respirar.', puerta: 'El operador te pide que abras las puertas: ve, ábrelas y vuelve enseguida al maniquí.'},
+        evento: {}},
+      en: {titulo: 'Home', breve: 'Your father collapses in the living room and you are alone with him. You are a citizen trained in basic life support with an AED.',
+        situacion: 'Your father, 62, is lying on the floor, face up, not moving and not responding to voice or touch. You are alone with him, your phone is on speaker and you are trained in basic life support with an AED.',
         direccion: '14 Mill Road, flat 2B · Oxford', calle: ['mill'], numero: ['14', 'fourteen'], ciudad: ['oxford'],
-        ves: {inicio: 'He is lying on the floor, face up.', consciencia: 'He does not respond when you shout and shake his shoulders.', respiracion: 'You cannot see his chest move: he is not breathing.', compresiones: 'He is still unresponsive and not breathing.'},
-        evento: {relevo: 'Your partner has just come home and can take over. Tell the call-taker.'}},
-      pt: {titulo: 'Em casa', breve: 'O seu pai cai inanimado na sala. Está sozinho com ele.',
-        situacion: 'O seu pai, de 62 anos, caiu inanimado na sala enquanto via televisão. Está sozinho com ele e tem o telemóvel em alta voz.',
+        ves: {inicio: 'He is not moving, not responding and not breathing normally.', compresiones: 'He is still unresponsive and not breathing.', puerta: 'The call-taker asks you to open the doors: go, open them and come straight back to the manikin.'},
+        evento: {}},
+      pt: {titulo: 'Domicílio', breve: 'O seu pai cai inanimado na sala e está sozinho com ele. É um cidadão com formação em suporte básico de vida com DAE.',
+        situacion: 'O seu pai, de 62 anos, está deitado no chão, de barriga para cima, não se mexe e não responde a estímulos verbais nem físicos. Está sozinho com ele, tem o telemóvel em alta voz e tem formação em suporte básico de vida com DAE.',
         direccion: 'Rua Direita, 14, 2.º B · Coimbra', calle: ['direita'], numero: ['14', 'catorze'], ciudad: ['coimbra'],
-        ves: {inicio: 'Está deitado no chão, de barriga para cima.', consciencia: 'Não responde, mesmo quando grita e lhe abana os ombros.', respiracion: 'Não vê o peito mexer-se: não respira.', compresiones: 'Continua sem responder e sem respirar.'},
-        evento: {relevo: 'O seu companheiro acabou de chegar a casa e pode render-lhe. Diga-o ao operador.'}}
-    }},
-  {id: 'dea', color: '#1F6FB2', icono: 'flame',
-    eventos: [{id: 'dea', tras: 45, palabras: 'dea', respuesta: 'deaInstr', pregunta: 'deaPregunta'}],
-    txt: {
-      es: {titulo: 'Polideportivo con DEA', breve: 'Un jugador se desploma en la pista. Alguien ha ido a por el desfibrilador.',
-        situacion: 'Un hombre de unos 50 años se ha desplomado en la pista de pádel. Una compañera ha ido a recepción a buscar el desfibrilador (DEA).',
-        direccion: 'Polideportivo Municipal, Avenida de la Libertad, 30 · Elche', calle: ['libertad', 'polideportivo'], numero: ['30', 'treinta'], ciudad: ['elche'],
-        ves: {inicio: 'Está tendido en la pista, boca arriba.', consciencia: 'No responde aunque le gritas y le sacudes los hombros.', respiracion: 'No respira: el pecho no se mueve.', compresiones: 'Sigue sin responder y sin respirar.'},
-        evento: {dea: '¡Llega tu compañera con el desfibrilador (DEA)! Díselo al operador.'}},
-      en: {titulo: 'Sports centre with an AED', breve: 'A player collapses on court. Someone has gone to fetch the defibrillator.',
-        situacion: 'A man of about 50 has collapsed on the padel court. A teammate has gone to reception to fetch the defibrillator (AED).',
-        direccion: 'Riverside Sports Centre, 30 Park Avenue · Oxford', calle: ['park', 'riverside', 'sports'], numero: ['30', 'thirty'], ciudad: ['oxford'],
-        ves: {inicio: 'He is lying on the court, face up.', consciencia: 'He does not respond when you shout and shake his shoulders.', respiracion: 'He is not breathing: his chest does not move.', compresiones: 'He is still unresponsive and not breathing.'},
-        evento: {dea: 'Your teammate arrives with the defibrillator (AED)! Tell the call-taker.'}},
-      pt: {titulo: 'Pavilhão com DAE', breve: 'Um jogador cai inanimado no campo. Alguém foi buscar o desfibrilhador.',
-        situacion: 'Um homem de cerca de 50 anos caiu inanimado no campo de padel. Uma colega foi à receção buscar o desfibrilhador (DAE).',
-        direccion: 'Pavilhão Municipal, Avenida da Liberdade, 30 · Coimbra', calle: ['liberdade', 'pavilhao'], numero: ['30', 'trinta'], ciudad: ['coimbra'],
-        ves: {inicio: 'Está deitado no campo, de barriga para cima.', consciencia: 'Não responde, mesmo quando grita e lhe abana os ombros.', respiracion: 'Não respira: o peito não se mexe.', compresiones: 'Continua sem responder e sem respirar.'},
-        evento: {dea: 'A sua colega chega com o desfibrilhador (DAE)! Diga-o ao operador.'}}
-    }},
-  {id: 'calle', color: '#6B4FD8', icono: 'pulse',
-    eventos: [],
-    txt: {
-      es: {titulo: 'En la calle: boqueadas', breve: 'Una mujer cae en la acera y respira de forma extraña.',
-        situacion: 'Una mujer de unos 70 años se ha caído en la acera, delante de una farmacia. No hay nadie más cerca.',
-        direccion: 'Calle de Jorge Juan, 8, frente a la farmacia · Alicante', calle: ['jorge juan', 'farmacia'], numero: ['8', 'ocho'], ciudad: ['alicante'],
-        ves: {inicio: 'Está tendida en la acera, boca arriba.', consciencia: 'No responde aunque le gritas y le sacudes los hombros.', respiracion: 'Hace boqueadas lentas y ruidosas cada pocos segundos; el pecho apenas se mueve.', compresiones: 'Sigue sin responder; las boqueadas cada vez son más espaciadas.'},
-        evento: {}},
-      en: {titulo: 'In the street: gasping', breve: 'A woman falls on the pavement and is breathing strangely.',
-        situacion: 'A woman of about 70 has fallen on the pavement outside a chemist. Nobody else is around.',
-        direccion: '8 Station Road, outside the chemist · Oxford', calle: ['station', 'chemist'], numero: ['8', 'eight'], ciudad: ['oxford'],
-        ves: {inicio: 'She is lying on the pavement, face up.', consciencia: 'She does not respond when you shout and shake her shoulders.', respiracion: 'She makes slow, noisy gasps every few seconds; her chest barely moves.', compresiones: 'She is still unresponsive; the gasps are getting further apart.'},
-        evento: {}},
-      pt: {titulo: 'Na rua: respiração agónica', breve: 'Uma mulher cai no passeio e respira de forma estranha.',
-        situacion: 'Uma mulher de cerca de 70 anos caiu no passeio, em frente a uma farmácia. Não há mais ninguém por perto.',
-        direccion: 'Rua da Sofia, 8, em frente à farmácia · Coimbra', calle: ['sofia', 'farmacia'], numero: ['8', 'oito'], ciudad: ['coimbra'],
-        ves: {inicio: 'Está deitada no passeio, de barriga para cima.', consciencia: 'Não responde, mesmo quando grita e lhe abana os ombros.', respiracion: 'Faz arquejos lentos e ruidosos a cada poucos segundos; o peito quase não se mexe.', compresiones: 'Continua sem responder; os arquejos são cada vez mais espaçados.'},
+        ves: {inicio: 'Não se mexe, não responde e não respira normalmente.', compresiones: 'Continua sem responder e sem respirar.', puerta: 'O operador pede-lhe que abra as portas: vá, abra-as e volte logo ao manequim.'},
         evento: {}}
+    }},
+  {id: 'dea', color: '#1F6FB2', icono: 'flame', puerta: false, desa: true,
+    eventos: [{id: 'dea', tras: 40, max: 100, palabras: 'dea', pregunta: 'deaPregunta'}],
+    txt: {
+      es: {titulo: 'Polideportivo con DESA', breve: 'Un jugador se desploma en la pista y alguien ha ido a por el DESA. Eres un ciudadano formado en técnicas de soporte vital básico con DESA.',
+        situacion: 'Un hombre de unos 50 años está tendido en la pista de pádel, boca arriba, no se mueve y no responde a estímulos verbales y físicos. Una compañera ha ido a recepción a buscar el desfibrilador (DESA). Estás formado en maniobras de soporte vital básico con DESA.',
+        direccion: 'Polideportivo Municipal, Avenida de la Libertad, 30 · Elche', calle: ['libertad', 'polideportivo'], numero: ['30', 'treinta'], ciudad: ['elche'],
+        ves: {inicio: 'No se mueve, no responde y no respira con normalidad.', compresiones: 'Sigue sin responder y sin respirar.', desa: 'El DESA está hablando: sigue sus instrucciones.', pulse: 'Antes de descargar: di «¡apartaos!», comprueba que nadie toca a la víctima y di «descarga».'},
+        evento: {dea: '¡Llega tu compañera con el DESA! Díselo al operador.'}},
+      en: {titulo: 'Sports centre with an AED', breve: 'A player collapses on court and someone has gone to fetch the AED. You are a citizen trained in basic life support with an AED.',
+        situacion: 'A man of about 50 is lying on the padel court, face up, not moving and not responding to voice or touch. A teammate has gone to reception to fetch the defibrillator (AED). You are trained in basic life support with an AED.',
+        direccion: 'Riverside Sports Centre, 30 Park Avenue · Oxford', calle: ['park', 'riverside', 'sports'], numero: ['30', 'thirty'], ciudad: ['oxford'],
+        ves: {inicio: 'He is not moving, not responding and not breathing normally.', compresiones: 'He is still unresponsive and not breathing.', desa: 'The AED is speaking: follow its instructions.', pulse: 'Before the shock: say “stand clear!”, check that nobody is touching the patient and say “shock”.'},
+        evento: {dea: 'Your teammate arrives with the AED! Tell the call-taker.'}},
+      pt: {titulo: 'Pavilhão com DAE', breve: 'Um jogador cai inanimado no campo e alguém foi buscar o DAE. É um cidadão com formação em suporte básico de vida com DAE.',
+        situacion: 'Um homem de cerca de 50 anos está deitado no campo de padel, de barriga para cima, não se mexe e não responde a estímulos verbais nem físicos. Uma colega foi à receção buscar o desfibrilhador (DAE). Tem formação em suporte básico de vida com DAE.',
+        direccion: 'Pavilhão Municipal, Avenida da Liberdade, 30 · Coimbra', calle: ['liberdade', 'pavilhao'], numero: ['30', 'trinta'], ciudad: ['coimbra'],
+        ves: {inicio: 'Não se mexe, não responde e não respira normalmente.', compresiones: 'Continua sem responder e sem respirar.', desa: 'O DAE está a falar: siga as suas instruções.', pulse: 'Antes do choque: diga «afastem-se!», confirme que ninguém toca na vítima e diga «choque».'},
+        evento: {dea: 'A sua colega chega com o DAE! Diga-o ao operador.'}}
     }}
 ];
 const escDe = id => ESC.find(e => e.id === id) || ESC[0];
 
-/* Frases del operador. Cada valor es una frase o una lista de frases (se dicen en orden). */
+/* Frases del operador y del DESA. Cada valor es una frase o una lista de frases (se dicen en orden). */
 const OPL = {
   es: {
     saludo: 'Emergencias 112, ¿dígame?',
@@ -1760,34 +1756,32 @@ const OPL = {
     dirFalta: {calle: '¿En qué calle está exactamente?', numero: '¿Qué número de la calle?', ciudad: '¿En qué población?'},
     dirOk: 'Anotado. La ambulancia ya va para allá.',
     dirSigue: 'Seguimos; la ambulancia ya va de camino.',
-    consciencia: '¿La persona le responde? Háblele fuerte y sacúdale por los hombros.',
-    conscienciaOtra: 'Compruébelo otra vez: llámele fuerte y sacúdale los hombros. ¿Abre los ojos o le contesta?',
-    respiracion: 'Inclínele la cabeza hacia atrás levantándole la barbilla y mírele el pecho. ¿Respira con normalidad?',
-    respiracionOtra: '¿Respira normal, como usted y como yo, o hace ruidos o boqueadas?',
-    noRespira: 'De acuerdo: está en parada. Vamos a empezar la reanimación ahora mismo.',
-    boqueadas: 'Esas boqueadas no son una respiración normal: está en parada. Vamos a empezar la reanimación ahora mismo.',
-    dudaRespira: 'Si no está seguro de que respire con normalidad, empezamos la reanimación.',
-    instrucciones: ['Póngase de rodillas a su lado.', 'Ponga el talón de una mano en el centro del pecho y la otra mano encima.', 'Con los brazos rectos, empuje fuerte y rápido, hundiendo unos cinco centímetros.', 'Empiece ya y cuente en voz alta conmigo: uno, dos, tres, cuatro. ¿Ha empezado?'],
-    instrOtra: '¿Está ya empujando en el centro del pecho? Dígame «sí» cuando empiece.',
-    empieceYa: 'Empiece ahora mismo: uno, dos, tres, cuatro. No pare.',
+    instrucciones: 'Inicie ya las compresiones torácicas: en el centro del pecho, fuerte y rápido, sin parar. ¿Ha empezado?',
+    instrOtra: '¿Está ya haciendo las compresiones? Dígame «sí» cuando empiece.',
+    empieceYa: 'Empiece ahora mismo las compresiones y no pare.',
     comprOk: 'Muy bien. Siga así, fuerte y rápido, sin parar. Yo sigo con usted.',
     oye: '¿Me oye?',
     noEntiendo: 'Perdone, no le he entendido.',
-    ticks: ['Muy bien, siga. Fuerte y rápido.', 'Deje que el pecho suba del todo después de cada compresión.', 'Lo está haciendo muy bien. No pare.', 'Mantenga los brazos rectos y el ritmo: uno, dos, tres, cuatro.', 'La ambulancia está en camino. Siga sin parar.'],
+    ticks: ['Muy bien, siga. Fuerte y rápido.', 'Deje que el pecho suba del todo después de cada compresión.', 'Lo está haciendo muy bien. No pare.', 'Mantenga los brazos rectos y el ritmo.', 'La ambulancia está en camino. Siga sin parar.'],
     control: '¿Ha empezado a respirar con normalidad?',
     controlNo: 'Entonces siga con las compresiones. No pare.',
     controlSi: 'Mírelo bien. Si de verdad respira con normalidad, puede parar y ponerlo de lado. Si no está seguro, siga con las compresiones.',
-    noPare: 'No pare. Siga empujando fuerte y rápido: cada segundo cuenta.',
+    noPare: 'No pare. Siga con las compresiones, fuerte y rápido: cada segundo cuenta.',
     cansancio: 'Lo sé, cansa mucho, pero lo está haciendo muy bien. No pare.',
     respiraAlgo: 'Si empieza a respirar con normalidad, puede parar y ponerlo de lado. Si no está seguro, siga con las compresiones.',
     ambulancia: 'La ambulancia ya va de camino y llegará enseguida. Siga con las compresiones.',
     generico: 'Entendido. Siga con las compresiones, fuerte y rápido.',
     deaPregunta: '¿Ha llegado ya alguien con el desfibrilador?',
-    deaInstr: ['Muy bien. Que su compañera lo encienda y siga las instrucciones de voz del aparato.', 'Que pegue los parches en el pecho desnudo, como indica el dibujo, mientras usted sigue con las compresiones.', 'Cuando el aparato diga que va a analizar, que nadie le toque. Después sigan sus órdenes.'],
+    deaInstr: ['Muy bien. Que su compañera encienda el DESA y sigan sus instrucciones de voz.', 'Usted no pare las compresiones mientras ella coloca los parches.'],
     deaNo: 'De acuerdo. Cuando llegue, avíseme. Siga con las compresiones.',
-    relevoInstr: ['Muy bien. Que se ponga de rodillas al otro lado.', 'Cámbiense cada dos minutos, sin parar las compresiones más de un momento.'],
+    seguridad: '¡Espere! Antes de descargar, diga «apártense» y compruebe que nadie toca a la víctima.',
+    postDescarga: 'Muy bien. Reanude ya las compresiones, fuerte y rápido. El DESA volverá a analizar dentro de dos minutos.',
+    puerta: ['La ambulancia está llegando.', 'Vaya rápido a abrir la puerta del portal y la de casa, y vuelva enseguida a las compresiones.', 'Avíseme cuando haya vuelto.'],
+    puertaOk: 'Muy bien. Siga con las compresiones hasta que entren los sanitarios.',
+    puertaOtra: '¿Ha podido abrir las puertas? Vuelva a las compresiones en cuanto lo haga.',
     fin: ['Ya están los sanitarios con usted. Siga con las compresiones hasta que le digan que pare.', 'Lo ha hecho muy bien. Fin de la simulación.'],
-    finManual: 'De acuerdo, terminamos aquí la simulación.'
+    finManual: 'De acuerdo, terminamos aquí la simulación.',
+    desa: {parches: 'Coloque los parches en el pecho desnudo del paciente, como indica el dibujo.', analiza: 'Analizando el ritmo cardiaco. No toque al paciente.', desfib: 'Ritmo desfibrilable. Descarga recomendada. Apártense del paciente.', pulse: 'Pulse el botón de descarga.', pulseOtra: 'Pulse el botón de descarga ahora.', hecha: 'Descarga administrada. Inicie la reanimación cardiopulmonar.'}
   },
   en: {
     saludo: '112, what is your emergency?',
@@ -1796,34 +1790,32 @@ const OPL = {
     dirFalta: {calle: 'Which street exactly?', numero: 'What number on the street?', ciudad: 'Which town?'},
     dirOk: 'Got it. The ambulance is on its way.',
     dirSigue: 'Let us carry on; the ambulance is already on its way.',
-    consciencia: 'Is the person responding? Talk to them loudly and shake their shoulders.',
-    conscienciaOtra: 'Check again: call out loudly and shake their shoulders. Do they open their eyes or answer you?',
-    respiracion: 'Tilt the head back by lifting the chin and look at the chest. Is the person breathing normally?',
-    respiracionOtra: 'Are they breathing normally, like you and me, or making noises or gasping?',
-    noRespira: 'All right: this is a cardiac arrest. We are going to start resuscitation right now.',
-    boqueadas: 'That gasping is not normal breathing: this is a cardiac arrest. We are going to start resuscitation right now.',
-    dudaRespira: 'If you are not sure the breathing is normal, we start resuscitation.',
-    instrucciones: ['Kneel down beside them.', 'Put the heel of one hand in the centre of the chest and your other hand on top.', 'With your arms straight, push hard and fast, about five centimetres deep.', 'Start now and count out loud with me: one, two, three, four. Have you started?'],
-    instrOtra: 'Are you pushing on the centre of the chest yet? Say “yes” when you start.',
-    empieceYa: 'Start right now: one, two, three, four. Do not stop.',
+    instrucciones: 'Start chest compressions now: centre of the chest, hard and fast, without stopping. Have you started?',
+    instrOtra: 'Are you doing compressions yet? Say “yes” when you start.',
+    empieceYa: 'Start compressions right now and do not stop.',
     comprOk: 'Very good. Keep going like that, hard and fast, without stopping. I am staying with you.',
     oye: 'Can you hear me?',
     noEntiendo: 'Sorry, I did not understand you.',
-    ticks: ['Very good, keep going. Hard and fast.', 'Let the chest come all the way back up after each compression.', 'You are doing really well. Do not stop.', 'Keep your arms straight and the rhythm: one, two, three, four.', 'The ambulance is on its way. Keep going without stopping.'],
+    ticks: ['Very good, keep going. Hard and fast.', 'Let the chest come all the way back up after each compression.', 'You are doing really well. Do not stop.', 'Keep your arms straight and the rhythm.', 'The ambulance is on its way. Keep going without stopping.'],
     control: 'Have they started breathing normally?',
     controlNo: 'Then keep going with the compressions. Do not stop.',
     controlSi: 'Look carefully. If they really are breathing normally, you can stop and put them on their side. If you are not sure, keep going with the compressions.',
-    noPare: 'Do not stop. Keep pushing hard and fast: every second counts.',
+    noPare: 'Do not stop. Keep doing compressions, hard and fast: every second counts.',
     cansancio: 'I know, it is very tiring, but you are doing really well. Do not stop.',
     respiraAlgo: 'If they start breathing normally, you can stop and put them on their side. If you are not sure, keep going with the compressions.',
     ambulancia: 'The ambulance is on its way and will be there very soon. Keep going with the compressions.',
     generico: 'Understood. Keep going with the compressions, hard and fast.',
     deaPregunta: 'Has anyone arrived with the defibrillator yet?',
-    deaInstr: ['Very good. Have your teammate switch it on and follow the voice instructions.', 'Have them stick the pads on the bare chest, as the picture shows, while you keep doing compressions.', 'When the machine says it is analysing, nobody touches the patient. Then follow its instructions.'],
+    deaInstr: ['Very good. Have your teammate switch on the AED and follow its voice instructions.', 'Do not stop compressions while she applies the pads.'],
     deaNo: 'All right. Tell me when it arrives. Keep going with the compressions.',
-    relevoInstr: ['Very good. Have them kneel on the other side.', 'Swap every two minutes, pausing the compressions only for a moment.'],
+    seguridad: 'Wait! Before the shock, say “stand clear” and check that nobody is touching the patient.',
+    postDescarga: 'Very good. Restart compressions now, hard and fast. The AED will analyse again in two minutes.',
+    puerta: ['The ambulance is arriving.', 'Quickly go and open the building\'s front door and your flat\'s door, then come straight back to the compressions.', 'Tell me when you are back.'],
+    puertaOk: 'Very good. Keep going with the compressions until the paramedics come in.',
+    puertaOtra: 'Have you managed to open the doors? Go back to the compressions as soon as you have.',
     fin: ['The paramedics are with you now. Keep doing compressions until they tell you to stop.', 'You did really well. End of the simulation.'],
-    finManual: 'All right, we will end the simulation here.'
+    finManual: 'All right, we will end the simulation here.',
+    desa: {parches: 'Apply the pads to the patient\'s bare chest, as shown in the picture.', analiza: 'Analysing heart rhythm. Do not touch the patient.', desfib: 'Shockable rhythm. Shock advised. Stand clear of the patient.', pulse: 'Press the shock button.', pulseOtra: 'Press the shock button now.', hecha: 'Shock delivered. Start cardiopulmonary resuscitation.'}
   },
   pt: {
     saludo: '112, qual é a sua emergência?',
@@ -1832,63 +1824,66 @@ const OPL = {
     dirFalta: {calle: 'Em que rua, exatamente?', numero: 'Qual é o número da porta?', ciudad: 'Em que localidade?'},
     dirOk: 'Registado. A ambulância já vai a caminho.',
     dirSigue: 'Vamos continuar; a ambulância já vai a caminho.',
-    consciencia: 'A pessoa responde-lhe? Fale-lhe alto e abane-lhe os ombros.',
-    conscienciaOtra: 'Verifique outra vez: chame-a alto e abane-lhe os ombros. Abre os olhos ou responde-lhe?',
-    respiracion: 'Incline-lhe a cabeça para trás levantando o queixo e olhe para o peito. Está a respirar normalmente?',
-    respiracionOtra: 'Respira normalmente, como eu e o senhor, ou faz ruídos ou arquejos?',
-    noRespira: 'Muito bem: está em paragem. Vamos começar já a reanimação.',
-    boqueadas: 'Esses arquejos não são uma respiração normal: está em paragem. Vamos começar já a reanimação.',
-    dudaRespira: 'Se não tem a certeza de que respira normalmente, começamos a reanimação.',
-    instrucciones: ['Ajoelhe-se ao lado da pessoa.', 'Coloque a base de uma mão no centro do peito e a outra mão por cima.', 'Com os braços esticados, empurre com força e depressa, afundando uns cinco centímetros.', 'Comece já e conte em voz alta comigo: um, dois, três, quatro. Já começou?'],
-    instrOtra: 'Já está a empurrar no centro do peito? Diga «sim» quando começar.',
-    empieceYa: 'Comece agora mesmo: um, dois, três, quatro. Não pare.',
+    instrucciones: 'Inicie já as compressões torácicas: no centro do peito, com força e depressa, sem parar. Já começou?',
+    instrOtra: 'Já está a fazer as compressões? Diga «sim» quando começar.',
+    empieceYa: 'Comece agora mesmo as compressões e não pare.',
     comprOk: 'Muito bem. Continue assim, com força e depressa, sem parar. Eu continuo consigo.',
     oye: 'Está a ouvir-me?',
     noEntiendo: 'Desculpe, não percebi.',
-    ticks: ['Muito bem, continue. Com força e depressa.', 'Deixe o peito subir completamente depois de cada compressão.', 'Está a fazer muito bem. Não pare.', 'Mantenha os braços esticados e o ritmo: um, dois, três, quatro.', 'A ambulância vai a caminho. Continue sem parar.'],
+    ticks: ['Muito bem, continue. Com força e depressa.', 'Deixe o peito subir completamente depois de cada compressão.', 'Está a fazer muito bem. Não pare.', 'Mantenha os braços esticados e o ritmo.', 'A ambulância vai a caminho. Continue sem parar.'],
     control: 'Começou a respirar normalmente?',
     controlNo: 'Então continue com as compressões. Não pare.',
-    controlSi: 'Olhe bem. Se respira mesmo normalmente, pode parar e colocá-la de lado. Se não tem a certeza, continue com as compressões.',
-    noPare: 'Não pare. Continue a empurrar com força e depressa: cada segundo conta.',
+    controlSi: 'Olhe bem. Se respira mesmo normalmente, pode parar e colocá-lo de lado. Se não tem a certeza, continue com as compressões.',
+    noPare: 'Não pare. Continue com as compressões, com força e depressa: cada segundo conta.',
     cansancio: 'Eu sei, cansa muito, mas está a fazer muito bem. Não pare.',
-    respiraAlgo: 'Se começar a respirar normalmente, pode parar e colocá-la de lado. Se não tem a certeza, continue com as compressões.',
+    respiraAlgo: 'Se começar a respirar normalmente, pode parar e colocá-lo de lado. Se não tem a certeza, continue com as compressões.',
     ambulancia: 'A ambulância já vai a caminho e chega já. Continue com as compressões.',
     generico: 'Entendido. Continue com as compressões, com força e depressa.',
     deaPregunta: 'Já chegou alguém com o desfibrilhador?',
-    deaInstr: ['Muito bem. Peça à sua colega que o ligue e siga as instruções de voz do aparelho.', 'Que cole os elétrodos no peito despido, como mostra o desenho, enquanto o senhor continua com as compressões.', 'Quando o aparelho disser que vai analisar, ninguém toca na vítima. Depois sigam as suas ordens.'],
+    deaInstr: ['Muito bem. Peça à sua colega que ligue o DAE e sigam as suas instruções de voz.', 'Não pare as compressões enquanto ela coloca os elétrodos.'],
     deaNo: 'Muito bem. Quando chegar, avise-me. Continue com as compressões.',
-    relevoInstr: ['Muito bem. Que se ajoelhe do outro lado.', 'Troquem a cada dois minutos, parando as compressões só um instante.'],
+    seguridad: 'Espere! Antes do choque, diga «afastem-se» e confirme que ninguém toca na vítima.',
+    postDescarga: 'Muito bem. Retome já as compressões, com força e depressa. O DAE volta a analisar dentro de dois minutos.',
+    puerta: ['A ambulância está a chegar.', 'Vá depressa abrir a porta do prédio e a de casa, e volte logo às compressões.', 'Avise-me quando tiver voltado.'],
+    puertaOk: 'Muito bem. Continue com as compressões até entrarem os profissionais de saúde.',
+    puertaOtra: 'Conseguiu abrir as portas? Volte às compressões assim que o fizer.',
     fin: ['Os profissionais de saúde já estão consigo. Continue com as compressões até lhe dizerem para parar.', 'Fez muito bem. Fim da simulação.'],
-    finManual: 'Muito bem, terminamos aqui a simulação.'
+    finManual: 'Muito bem, terminamos aqui a simulação.',
+    desa: {parches: 'Coloque os elétrodos no peito despido da vítima, como mostra o desenho.', analiza: 'A analisar o ritmo cardíaco. Não toque na vítima.', desfib: 'Ritmo desfibrilhável. Choque recomendado. Afastem-se da vítima.', pulse: 'Pressione o botão de choque.', pulseOtra: 'Pressione agora o botão de choque.', hecha: 'Choque administrado. Inicie a reanimação cardiopulmonar.'}
   }
 };
 
-/* Palabras clave que el código busca en lo que dice el estudiante (se comparan sin tildes ni mayúsculas, como palabras o expresiones completas). */
+/* Palabras clave que el código busca en lo que dice el estudiante (sin tildes ni mayúsculas, como palabras o expresiones completas). */
 const KW = {
   es: {
     comenzar: ['comenzamos', 'empezamos', 'comenzar', 'empezar', 'vamos a empezar', 'vamos a comenzar'],
     terminar: ['terminar simulacion', 'terminar la simulacion', 'terminamos la simulacion', 'fin de la simulacion', 'termina la simulacion', 'acabar la simulacion'],
     no: ['no', 'nada', 'tampoco', 'ninguna', 'nunca', 'negativo'],
     si: ['si', 'vale', 'claro', 'afirmativo', 'correcto', 'eso es', 'de acuerdo', 'ok', 'responde', 'contesta', 'respira'],
-    raro: ['raro', 'rara', 'boquea', 'boqueadas', 'boqueando', 'boqueada', 'ronca', 'ronquidos', 'ruido', 'ruidos', 'jadea', 'gorgoteo', 'agonica', 'a veces', 'de vez en cuando', 'muy poco', 'casi no', 'mal', 'extrano', 'extrana', 'bocanadas'],
-    motivo: ['no respira', 'inconsciente', 'desmayado', 'desmayada', 'se ha caido', 'no responde', 'parada', 'infarto', 'desplomado', 'desplomada', 'no reacciona', 'sin conocimiento', 'no se mueve', 'caido', 'caida', 'muerto', 'muerta', 'convulsion', 'no contesta', 'mareado', 'se ha desmayado'],
-    empezado: ['si', 'ya', 'empiezo', 'empezado', 'empezando', 'estoy', 'vale', 'empujando', 'haciendo', 'listo', 'lista', 'ok', 'comprimiendo', 'adelante'],
-    compresiones: ['compresiones', 'masaje cardiaco', 'reanimando', 'estoy empujando', 'rcp'],
-    paro: ['paro', 'he parado', 'dejo', 'me paro', 'paramos', 'parado', 'dejo de'],
+    motivo: ['no respira', 'inconsciente', 'desmayado', 'desmayada', 'se ha caido', 'no responde', 'parada', 'infarto', 'desplomado', 'desplomada', 'no reacciona', 'sin conocimiento', 'no se mueve', 'caido', 'caida', 'tendido', 'tendida', 'en el suelo', 'muerto', 'muerta', 'no contesta', 'se ha desmayado'],
+    noResponde: ['no responde', 'inconsciente', 'no reacciona', 'sin conocimiento', 'no contesta', 'no se mueve', 'no responde a estimulos', 'parada', 'parada cardiaca', 'parada cardiorrespiratoria'],
+    noRespira: ['no respira', 'sin respiracion', 'no respira con normalidad', 'no respira bien', 'no respira normal', 'respira mal', 'boquea', 'boqueadas', 'parada', 'parada cardiaca', 'parada cardiorrespiratoria'],
+    empezado: ['si', 'ya', 'empiezo', 'empezado', 'empezando', 'estoy', 'vale', 'haciendo', 'listo', 'lista', 'ok', 'comprimiendo', 'adelante'],
+    compresiones: ['compresiones', 'masaje cardiaco', 'reanimando', 'reanimacion', 'rcp'],
+    paro: ['paro', 'he parado', 'me paro', 'paramos', 'parado', 'dejo de'],
     cansado: ['cansado', 'cansada', 'no puedo', 'agotado', 'agotada', 'me canso', 'muy duro', 'no aguanto'],
     respira: ['respira', 'se mueve', 'abre los ojos', 'tose', 'reacciona'],
     ambulancia: ['cuanto', 'ambulancia', 'tardan', 'tarda', 'falta', 'llegan', 'llega'],
     numeros: ['uno', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve', 'diez', 'once', 'doce', 'trece', 'catorce', 'quince'],
-    dea: ['desfibrilador', 'dea', 'desfibrilar', 'aparato', 'desfibrilacion'],
-    relevo: ['pareja', 'releve', 'relevar', 'relevo', 'mujer', 'marido', 'alguien', 'ayuda', 'ha llegado', 'novia', 'novio', 'hermano', 'hermana']
+    dea: ['desfibrilador', 'desa', 'dea', 'desfibrilar', 'aparato', 'desfibrilacion'],
+    parches: ['puestos', 'colocados', 'pegados', 'ya estan', 'listo', 'listos', 'parches'],
+    seguridad: ['apartaos', 'apartense', 'apartad', 'apartarse', 'apartaros', 'apartense todos', 'fuera todos', 'todos fuera', 'nadie toca', 'nadie le toca', 'nadie lo toca', 'nadie toque', 'no toqueis', 'no toquen', 'alejaos', 'alejense', 'separaos', 'separense', 'nadie la toca'],
+    descarga: ['descarga', 'descargo', 'descargar', 'descargando', 'pulso', 'pulso el boton', 'choque'],
+    puertaOk: ['abierta', 'abiertas', 'abierto', 'he vuelto', 'ya estoy', 'vuelvo', 'ya esta', 'listo', 'sigo', 'abro', 'voy', 'de vuelta', 'abiertos', 'ya']
   },
   en: {
     comenzar: ['let s begin', 'lets begin', 'let us begin', 'begin', 'let s start', 'lets start', 'start'],
     terminar: ['end simulation', 'end the simulation', 'stop simulation', 'stop the simulation', 'finish the simulation'],
     no: ['no', 'not', 'nothing', 'nope', 'negative', 'isn t', 'doesn t', 'isnt', 'doesnt'],
     si: ['yes', 'yeah', 'yep', 'ok', 'okay', 'correct', 'right', 'sure', 'responding', 'responds', 'breathing', 'answering'],
-    raro: ['gasping', 'gasp', 'gasps', 'snoring', 'noise', 'noises', 'noisy', 'strange', 'weird', 'odd', 'sometimes', 'barely', 'gurgling', 'agonal', 'not normal', 'abnormal'],
-    motivo: ['not breathing', 'unconscious', 'collapsed', 'fainted', 'fallen', 'fell', 'not responding', 'unresponsive', 'cardiac arrest', 'heart attack', 'passed out', 'not moving', 'dead', 'seizure', 'no response'],
+    motivo: ['not breathing', 'unconscious', 'collapsed', 'fainted', 'fallen', 'fell', 'not responding', 'unresponsive', 'cardiac arrest', 'heart attack', 'passed out', 'not moving', 'lying on the floor', 'on the floor', 'dead', 'no response'],
+    noResponde: ['not responding', 'unresponsive', 'unconscious', 'no response', 'not moving', 'not reacting', 'cardiac arrest'],
+    noRespira: ['not breathing', 'isn t breathing', 'isnt breathing', 'no breathing', 'not breathing normally', 'gasping', 'cardiac arrest'],
     empezado: ['yes', 'yeah', 'started', 'starting', 'pushing', 'doing it', 'ok', 'okay', 'go', 'ready', 'compressing', 'i am', 'i m'],
     compresiones: ['compressions', 'cpr', 'pushing on the chest', 'resuscitating'],
     paro: ['i stopped', 'stopped', 'stopping', 'i stop', 'take a break'],
@@ -1897,191 +1892,247 @@ const KW = {
     ambulancia: ['how long', 'ambulance', 'when', 'coming', 'arrive'],
     numeros: ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'],
     dea: ['defibrillator', 'aed', 'machine', 'defib'],
-    relevo: ['partner', 'take over', 'wife', 'husband', 'someone', 'help', 'arrived', 'here now', 'brother', 'sister']
+    parches: ['pads on', 'on', 'placed', 'done', 'ready', 'attached', 'pads'],
+    seguridad: ['stand clear', 'clear', 'everyone clear', 'all clear', 'stand back', 'nobody touching', 'no one touching', 'nobody is touching', 'don t touch', 'dont touch', 'move away', 'hands off'],
+    descarga: ['shock', 'shocking', 'press', 'pressing', 'delivering', 'pressed'],
+    puertaOk: ['open', 'opened', 'back', 'i m back', 'im back', 'done', 'going', 'coming']
   },
   pt: {
     comenzar: ['comecamos', 'vamos comecar', 'comecar', 'iniciar', 'vamos la'],
     terminar: ['terminar simulacao', 'terminar a simulacao', 'fim da simulacao', 'acabar a simulacao', 'terminamos a simulacao'],
     no: ['nao', 'nada', 'nunca', 'nenhuma', 'negativo'],
     si: ['sim', 'claro', 'certo', 'correto', 'ok', 'esta bem', 'responde', 'respira'],
-    raro: ['estranho', 'estranha', 'arqueja', 'arquejos', 'arquejar', 'ressona', 'ruido', 'ruidos', 'as vezes', 'mal', 'muito pouco', 'quase nao', 'agonica', 'gorgolejo', 'esquisito', 'esquisita'],
-    motivo: ['nao respira', 'inconsciente', 'desmaiou', 'desmaiado', 'desmaiada', 'caiu', 'nao responde', 'paragem', 'enfarte', 'ataque cardiaco', 'nao reage', 'sem sentidos', 'nao se mexe', 'morto', 'morta', 'convulsao'],
-    empezado: ['sim', 'ja', 'comecei', 'comecando', 'a comecar', 'estou', 'a empurrar', 'a fazer', 'pronto', 'pronta', 'ok'],
-    compresiones: ['compressoes', 'massagem cardiaca', 'a reanimar', 'suporte basico'],
-    paro: ['parei', 'paro', 'vou parar', 'parar'],
+    motivo: ['nao respira', 'inconsciente', 'desmaiou', 'desmaiado', 'desmaiada', 'caiu', 'nao responde', 'paragem', 'enfarte', 'ataque cardiaco', 'nao reage', 'sem sentidos', 'nao se mexe', 'deitado', 'deitada', 'no chao', 'morto', 'morta'],
+    noResponde: ['nao responde', 'inconsciente', 'nao reage', 'sem sentidos', 'nao se mexe', 'paragem', 'paragem cardiaca', 'paragem cardiorrespiratoria'],
+    noRespira: ['nao respira', 'sem respiracao', 'nao respira normalmente', 'nao respira bem', 'respira mal', 'arqueja', 'paragem', 'paragem cardiaca', 'paragem cardiorrespiratoria'],
+    empezado: ['sim', 'ja', 'comecei', 'comecando', 'a comecar', 'estou', 'a fazer', 'pronto', 'pronta', 'ok'],
+    compresiones: ['compressoes', 'massagem cardiaca', 'a reanimar', 'suporte basico', 'rcp'],
+    paro: ['parei', 'paro', 'vou parar'],
     cansado: ['cansado', 'cansada', 'nao consigo', 'exausto', 'exausta', 'nao aguento'],
     respira: ['respira', 'mexe', 'abriu os olhos', 'tosse', 'reage'],
     ambulancia: ['quanto tempo', 'ambulancia', 'demora', 'falta', 'chega'],
     numeros: ['um', 'dois', 'tres', 'quatro', 'cinco', 'seis', 'sete', 'oito', 'nove', 'dez', 'onze', 'doze'],
     dea: ['desfibrilhador', 'dae', 'desfibrilador', 'aparelho'],
-    relevo: ['companheiro', 'companheira', 'mulher', 'marido', 'alguem', 'ajuda', 'chegou', 'render', 'irmao', 'irma']
+    parches: ['colocados', 'postos', 'prontos', 'pronto', 'ja estao', 'eletrodos', 'elétrodos'],
+    seguridad: ['afastem se', 'afastem', 'afastar', 'afastem se todos', 'todos afastados', 'afastados', 'ninguem toca', 'ninguem toque', 'nao toquem', 'ninguem esta a tocar'],
+    descarga: ['choque', 'descarga', 'disparo', 'pressiono', 'carrego', 'chocar'],
+    puertaOk: ['aberta', 'abertas', 'voltei', 'ja estou', 'pronto', 'vou', 'abri', 'aberto', 'ja']
   }
 };
 
 /* ══ Motor de la llamada: lógica pura (sin DOM), probada en Node. ══
-   · El operador «de guion» es una máquina de estados que sigue el protocolo de RCP guiada por teléfono.
-   · Anota lo que hace el estudiante (marcas) y evalúa la llamada. La evaluación la hace SIEMPRE el código,
-     también cuando el operador lo simula la IA.
-   Tiempos en segundos desde que descuelga el operador. */
+   · El operador «de guion» sigue el protocolo de RCP guiada por teléfono para un reanimador formado en SVB con DESA:
+     motivo → dirección → compresiones (sin preguntas de consciencia, respiración ni vía aérea).
+   · En el polideportivo simula el DESA (parches → análisis → ritmo desfibrilable → descarga con medida de seguridad).
+   · En el domicilio, antes de llegar la ambulancia, pide abrir las puertas y volver a las compresiones.
+   · Anota lo que hace el estudiante y evalúa la llamada. La evaluación la hace SIEMPRE el código, también con el operador de IA.
+   Tiempos en segundos desde que descuelga el operador. Lo que dice el DESA va como {desa: 'frase'}. */
 const OBJ_RECON = 90, OBJ_COMPR = 150;          // objetivos de la AHA para la RCP guiada por teléfono (s)
-const TICK_COMPR = 20, ESPERA_PREG = 14, ESPERA_EVENTO = 12;
-const FASES = ['motivo', 'direccion', 'consciencia', 'respiracion', 'instrucciones', 'compresiones', 'fin'];
+const TICK_COMPR = 20, ESPERA_PREG = 14, ESPERA_EVENTO = 12, PUERTA_ANTES = 45, ESPERA_PUERTA = 20;
+const DESA_PARCHES = 10, DESA_ANALISIS = 5, DESA_REPITE = 12;
+const FASES = ['motivo', 'direccion', 'instrucciones', 'compresiones', 'fin'];
 
 const _n = s => ' ' + norm(s) + ' ';
 const tiene = (txt, lista) => { const n = _n(txt); return (lista || []).some(k => n.includes(' ' + norm(k) + ' ')); };
+/* posición de la primera palabra clave de la lista en el texto (o -1) */
+const posDe = (txt, lista) => { const n = _n(txt); let p = -1; for (const k of lista || []) { const i = n.indexOf(' ' + norm(k) + ' '); if (i >= 0 && (p < 0 || i < p)) p = i; } return p; };
 const tokensDe = s => norm(s).split(' ').filter(Boolean);
 const lista = x => Array.isArray(x) ? x : [x];
 
 /* ¿está contando en voz alta? (3 o más números y casi nada más) */
 function esConteo(txt, kw) { const tk = tokensDe(txt); if (!tk.length) return false; const n = tk.filter(x => kw.numeros.includes(x) || /^\d{1,2}$/.test(x)).length; return n >= 3 && n / tk.length >= 0.6; }
-/* respuesta a una pregunta de sí / no: 'no' | 'si' | 'raro' (respiración anómala) | '?' */
-function clasifica(txt, fase, kw) {
-  if (fase === 'respiracion' && tiene(txt, kw.raro)) return 'raro';
-  if (tiene(txt, kw.no)) return 'no';
-  if (tiene(txt, kw.si)) return 'si';
-  return '?';
-}
+/* respuesta a una pregunta de sí / no: 'no' | 'si' | '?' */
+function clasifica(txt, kw) { if (tiene(txt, kw.no)) return 'no'; if (tiene(txt, kw.si)) return 'si'; return '?'; }
 const partesDir = (txt, e) => ({calle: tiene(txt, e.calle), numero: tiene(txt, e.numero), ciudad: tiene(txt, e.ciudad)});
 
 function nuevoOperador(escId, lang, dur) {
-  return {escId, lang: OPL[lang] ? lang : 'es', dur, fase: 'motivo', int: 0, prox: ESPERA_PREG, tickN: 0, control: false, log: [],
-    ev: {},   // id → {t, avisado, preguntado, resuelto}
-    m: {motivo: false, dir: {calle: false, numero: false, ciudad: false}, dirPrimera: null, dirIntentos: 0, dirOk: false,
-      consPrimera: null, consOk: false, respPrimera: null, respOk: false, respRaro: false, tRecon: null, tCompr: null,
-      cuenta: false, interrupciones: 0, cansancio: 0, controlErr: 0, terminado: null, tFin: null}};
+  return {escId, lang: OPL[lang] ? lang : 'es', dur, fase: 'motivo', int: 0, prox: ESPERA_PREG, tickN: 0, tickL: 0, control: false, log: [],
+    ev: {},        // id → {t, avisado, preguntado, resuelto, tAviso}
+    desa: null,    // {paso: 'parches'|'analiza'|'pulse'|'hecha', t, tPulse, tShock, seguro, segErr, repite}
+    puerta: null,  // {t, abierta, tAb, recordada}
+    m: {motivo: false, noResponde: false, noRespira: false, tRecon: null, dir: {calle: false, numero: false, ciudad: false}, dirPrimera: null, dirIntentos: 0, dirOk: false,
+      tCompr: null, cuenta: false, interrupciones: 0, cansancio: 0, controlErr: 0, terminado: null, tFin: null}};
 }
 const _ctx = op => ({e: escDe(op.escId), tx: escDe(op.escId).txt[op.lang], L: OPL[op.lang], kw: KW[op.lang]});
-/* lo que dice el operador queda en el registro; devuelve la lista de frases */
-function di(op, t, frases, fuente = 'guion') { const f = frases.flatMap(lista).filter(Boolean); if (f.length) op.log.push({t, quien: 'op', texto: f.join(' '), fase: op.fase, fuente}); return f; }
-const preguntaDe = (op, L) => ({motivo: L.motivoOtra, direccion: L.direccion, consciencia: L.consciencia, respiracion: L.respiracion, instrucciones: L.instrOtra})[op.fase];
+/* lo que dicen operador y DESA queda en el registro; devuelve la lista de frases ({desa} para el aparato) */
+function di(op, t, frases, fuente = 'guion') {
+  const f = frases.flatMap(x => x && typeof x === 'object' && !Array.isArray(x) ? [x] : lista(x)).filter(Boolean);
+  let acc = [];
+  const vuelca = () => { if (acc.length) op.log.push({t, quien: 'op', texto: acc.join(' '), fase: op.fase, fuente}); acc = []; };
+  for (const x of f) { if (typeof x === 'object') { vuelca(); op.log.push({t, quien: 'desa', texto: x.desa, fase: op.fase, fuente: 'guion'}); } else acc.push(x); }
+  vuelca(); return f;
+}
+const preguntaDe = (op, L) => ({motivo: L.motivoOtra, direccion: L.direccion, instrucciones: L.instrOtra})[op.fase];
 const cambia = (op, fase) => { op.fase = fase; op.int = 0; };
+const desaActivo = op => !!op.desa && op.desa.paso !== 'hecha';
+const puertaPendiente = op => !!op.puerta && !op.puerta.abierta;
 
+/* reconocimiento de la parada: el estudiante informa de que no responde y no respira (con cualquier frase y en cualquier momento) */
+function anotaValoracion(op, texto, t) {
+  const {kw} = _ctx(op), m = op.m;
+  if (tiene(texto, kw.noResponde)) m.noResponde = true;
+  if (tiene(texto, kw.noRespira)) m.noRespira = true;
+  if (m.tRecon === null && m.noResponde && m.noRespira) m.tRecon = t;
+}
 function opInicio(op) { return {decir: di(op, 0, [OPL[op.lang].saludo]), fin: false}; }
 
 /* el estudiante ha dicho algo */
 function opHabla(op, texto, t) {
-  const {tx, L, kw} = _ctx(op), m = op.m;
+  const {L, kw, tx} = _ctx(op), m = op.m;
   texto = String(texto || '').trim(); if (!texto || op.fase === 'fin') return {decir: [], fin: op.fase === 'fin'};
   op.log.push({t, quien: 'est', texto, fase: op.fase});
   if (tiene(texto, kw.terminar)) { m.terminado = 'manual'; m.tFin = t; const d = di(op, t, [L.finManual]); cambia(op, 'fin'); return {decir: d, fin: true}; }
+  anotaValoracion(op, texto, t);
   const conteo = esConteo(texto, kw); if (conteo) m.cuenta = true;
-  /* empezó las compresiones antes de que se lo pidieran */
-  if (m.tCompr === null && op.fase !== 'instrucciones' && (tiene(texto, kw.compresiones) || (conteo && ['consciencia', 'respiracion'].includes(op.fase)))) m.tCompr = t;
+  const yaComprime = tiene(texto, kw.compresiones) || conteo;
+  if (m.tCompr === null && yaComprime) m.tCompr = t;   // ya estaba (o empieza) con las compresiones
   const r = d => ({decir: di(op, t, d), fin: false});
+  const aCompresiones = () => { cambia(op, 'compresiones'); op.prox = t + TICK_COMPR; };
   switch (op.fase) {
     case 'motivo': {
-      m.motivo = tiene(texto, kw.motivo);
+      m.motivo = tiene(texto, kw.motivo) || m.noResponde || m.noRespira;
       const p = partesDir(texto, tx);
-      if (p.calle || p.numero) return dirRespuesta(op, texto, t, true);
+      if (p.calle || p.numero) return dirRespuesta(op, texto, t);
       cambia(op, 'direccion'); return r([L.direccion]);
     }
-    case 'direccion': return dirRespuesta(op, texto, t, false);
-    case 'consciencia': {
-      const c = clasifica(texto, 'consciencia', kw); op.int++;
-      if (c === 'no') { if (m.consPrimera === null) m.consPrimera = true; m.consOk = true; cambia(op, 'respiracion'); return r([L.respiracion]); }
-      if (c === 'si' && m.consPrimera === null) m.consPrimera = false;
-      if (op.int >= 3) { cambia(op, 'respiracion'); return r([L.respiracion]); }
-      return r(c === 'si' ? [L.conscienciaOtra] : [L.noEntiendo, L.consciencia]);
-    }
-    case 'respiracion': {
-      const c = clasifica(texto, 'respiracion', kw); op.int++;
-      if (c === 'no' || c === 'raro') {
-        if (m.respPrimera === null) m.respPrimera = true; m.respOk = true; m.respRaro = c === 'raro'; m.tRecon = t;
-        cambia(op, 'instrucciones'); return r([c === 'raro' ? L.boqueadas : L.noRespira, L.instrucciones]);
-      }
-      if (c === 'si' && m.respPrimera === null) m.respPrimera = false;
-      if (op.int >= 3) { m.tRecon = t; cambia(op, 'instrucciones'); return r([L.dudaRespira, L.instrucciones]); }
-      return r(c === 'si' ? [L.respiracionOtra] : [L.noEntiendo, L.respiracionOtra]);
-    }
+    case 'direccion': return dirRespuesta(op, texto, t);
     case 'instrucciones': {
       op.int++;
-      const empezo = conteo || tiene(texto, kw.compresiones) || (tiene(texto, kw.empezado) && !tiene(texto, kw.no));
-      if (empezo) { if (m.tCompr === null) m.tCompr = t; cambia(op, 'compresiones'); op.prox = t + TICK_COMPR; return r([L.comprOk]); }
-      if (op.int >= 3) { if (m.tCompr === null) m.tCompr = t; cambia(op, 'compresiones'); op.prox = t + TICK_COMPR; return r([L.empieceYa]); }
+      const empezo = yaComprime || (tiene(texto, kw.empezado) && !tiene(texto, kw.no));
+      if (empezo) { if (m.tCompr === null) m.tCompr = t; aCompresiones(); return r([L.comprOk]); }
+      if (op.int >= 3) { if (m.tCompr === null) m.tCompr = t; aCompresiones(); return r([L.empieceYa]); }
       return r([L.instrOtra]);
     }
     case 'compresiones': {
+      if (desaActivo(op)) return desaHabla(op, texto, t);
       if (conteo) return {decir: [], fin: false};   // cuenta en voz alta: el operador no le interrumpe
       op.prox = t + TICK_COMPR;
+      if (puertaPendiente(op) && tiene(texto, kw.puertaOk)) { op.puerta.abierta = true; op.puerta.tAb = t; return r([L.puertaOk]); }
       for (const ev of escDe(op.escId).eventos) {
         const s = op.ev[ev.id]; if (!s || s.resuelto) continue;
         const nombra = tiene(texto, kw[ev.palabras]);
-        if (nombra || (s.preguntado && clasifica(texto, '', kw) === 'si')) { s.resuelto = true; if (!s.preguntado) { s.avisado = true; s.tAviso = t; } return r([L[ev.respuesta]]); }
-        if (s.preguntado && clasifica(texto, '', kw) === 'no') { s.preguntado = false; s.t = t; return r([L.deaNo]); }
+        if (nombra || (s.preguntado && clasifica(texto, kw) === 'si')) {
+          s.resuelto = true; if (!s.preguntado) { s.avisado = true; s.tAviso = t; }
+          op.desa = {paso: 'parches', t, tPulse: null, tShock: null, seguro: false, segErr: 0, repite: 0};
+          return r([L.deaInstr, {desa: L.desa.parches}]);
+        }
+        if (s.preguntado && clasifica(texto, kw) === 'no') { s.preguntado = false; s.t = t; return r([L.deaNo]); }
       }
-      if (op.control) { const c = clasifica(texto, '', kw); op.control = false; if (c === 'si') { m.controlErr++; return r([L.controlSi]); } if (c === 'no') return r([L.controlNo]); }
+      if (op.control) { const c = clasifica(texto, kw); op.control = false; if (c === 'si') { m.controlErr++; return r([L.controlSi]); } if (c === 'no') return r([L.controlNo]); }
       if (tiene(texto, kw.paro)) { m.interrupciones++; return r([L.noPare]); }
       if (tiene(texto, kw.cansado)) { m.cansancio++; return r([L.cansancio]); }
-      if (tiene(texto, kw.respira)) return r([L.respiraAlgo]);
+      if (tiene(texto, kw.respira) && !tiene(texto, kw.noRespira)) return r([L.respiraAlgo]);
       if (tiene(texto, kw.ambulancia)) return r([L.ambulancia]);
       return r([L.generico]);
     }
   }
   return {decir: [], fin: false};
 }
-function dirRespuesta(op, texto, t, enMotivo) {
+function dirRespuesta(op, texto, t) {
   const {tx, L} = _ctx(op), m = op.m, p = partesDir(texto, tx);
   if (op.fase !== 'direccion') cambia(op, 'direccion');
   m.dirIntentos++; op.int++;
   if (m.dirPrimera === null) m.dirPrimera = p.calle && p.numero && p.ciudad;
   for (const k of ['calle', 'numero', 'ciudad']) m.dir[k] = m.dir[k] || p[k];
   const falta = ['calle', 'numero', 'ciudad'].find(k => !m.dir[k]);
-  if (!falta) { m.dirOk = true; cambia(op, 'consciencia'); return {decir: di(op, t, [L.dirOk, L.consciencia]), fin: false}; }
-  if (op.int >= 3) { cambia(op, 'consciencia'); return {decir: di(op, t, [L.dirSigue, L.consciencia]), fin: false}; }
+  const siguiente = pre => {
+    if (m.tCompr !== null) { cambia(op, 'compresiones'); op.prox = t + TICK_COMPR; return {decir: di(op, t, [pre, L.comprOk]), fin: false}; }
+    cambia(op, 'instrucciones'); return {decir: di(op, t, [pre, L.instrucciones]), fin: false};
+  };
+  if (!falta) { m.dirOk = true; return siguiente(L.dirOk); }
+  if (op.int >= 3) return siguiente(L.dirSigue);
   return {decir: di(op, t, [L.dirFalta[falta]]), fin: false};
 }
+/* durante el DESA: parches colocados, medida de seguridad y descarga por voz */
+function desaHabla(op, texto, t) {
+  const {L, kw} = _ctx(op), d = op.desa, r = f => ({decir: di(op, t, f), fin: false});
+  if (d.paso === 'parches' && tiene(texto, kw.parches)) { d.paso = 'analiza'; d.t = t; return r([{desa: L.desa.analiza}]); }
+  if (d.paso === 'pulse') {
+    const ps = posDe(texto, kw.seguridad), pd = posDe(texto, kw.descarga);
+    if (ps >= 0 && (pd < 0 || ps < pd)) d.seguro = true;
+    if (pd >= 0) {
+      if (!d.seguro) { d.segErr++; d.t = t; return r([L.seguridad]); }
+      d.paso = 'hecha'; d.tShock = t; op.prox = t + TICK_COMPR;
+      return r([{desa: L.desa.hecha}, L.postDescarga]);
+    }
+    d.t = t;   // dijo la medida de seguridad: el DESA sigue esperando la descarga
+  }
+  return {decir: [], fin: false};
+}
 
-/* paso del tiempo (la interfaz lo llama cuando el operador no está hablando). Devuelve null si no hay nada que hacer. */
+/* paso del tiempo (la interfaz lo llama cuando nadie está hablando). Devuelve null si no hay nada que hacer. */
 function opTick(op, t) {
   if (op.fase === 'fin') return null;
   const {e, L} = _ctx(op), m = op.m;
   if (t >= op.dur) { m.terminado = 'auto'; m.tFin = t; const d = di(op, t, [L.fin]); cambia(op, 'fin'); return {decir: d, fin: true}; }
   if (op.fase === 'compresiones') {
+    if (desaActivo(op)) {
+      const d = op.desa;
+      if (d.paso === 'parches' && t >= d.t + DESA_PARCHES) { d.paso = 'analiza'; d.t = t; return {decir: di(op, t, [{desa: L.desa.analiza}]), fin: false}; }
+      if (d.paso === 'analiza' && t >= d.t + DESA_ANALISIS) { d.paso = 'pulse'; d.t = t; d.tPulse = t; return {decir: di(op, t, [{desa: L.desa.desfib}, {desa: L.desa.pulse}]), fin: false}; }
+      if (d.paso === 'pulse' && t >= d.t + DESA_REPITE) { d.t = t; d.repite++; return {decir: di(op, t, [{desa: L.desa.pulseOtra}]), fin: false}; }
+      return null;
+    }
+    if (e.puerta && !op.puerta && t >= op.dur - PUERTA_ANTES) { op.puerta = {t, abierta: false, tAb: null, recordada: false}; op.control = false; op.prox = t + TICK_COMPR; return {decir: di(op, t, [L.puerta]), fin: false}; }
+    if (puertaPendiente(op)) {
+      if (!op.puerta.recordada && t >= op.puerta.t + ESPERA_PUERTA) { op.puerta.recordada = true; return {decir: di(op, t, [L.puertaOtra]), fin: false}; }
+      return null;
+    }
     for (const ev of e.eventos) {
       const s = op.ev[ev.id];
-      if (!s && m.tCompr !== null && t >= m.tCompr + ev.tras) { op.ev[ev.id] = {t, avisado: false, preguntado: false, resuelto: false}; return {decir: [], fin: false, evento: ev.id}; }
+      if (!s && m.tCompr !== null && t >= Math.min(m.tCompr + ev.tras, Math.max(ev.max, m.tCompr + 5))) { op.ev[ev.id] = {t, avisado: false, preguntado: false, resuelto: false, tAviso: null}; return {decir: [], fin: false, evento: ev.id}; }
       if (s && !s.resuelto && !s.preguntado && ev.pregunta && t >= s.t + ESPERA_EVENTO) { s.preguntado = true; op.prox = t + TICK_COMPR; return {decir: di(op, t, [L[ev.pregunta]]), fin: false}; }
     }
     if (t >= op.prox) {
       op.tickN++; op.prox = t + TICK_COMPR;
       if (op.tickN % 3 === 0) { op.control = true; return {decir: di(op, t, [L.control]), fin: false}; }
-      op.tickL = (op.tickL || 0) + 1; return {decir: di(op, t, [L.ticks[(op.tickL - 1) % L.ticks.length]]), fin: false};
+      op.tickL++; return {decir: di(op, t, [L.ticks[(op.tickL - 1) % L.ticks.length]]), fin: false};
     }
     return null;
   }
   if (t >= op.prox) { op.prox = t + ESPERA_PREG; return {decir: di(op, t, [L.oye, preguntaDe(op, L)]), fin: false}; }
   return null;
 }
-/* la interfaz avisa de que el operador ha terminado de hablar: desde ahí cuenta la espera */
-function opCalla(op, t) { op.prox = t + (op.fase === 'compresiones' ? TICK_COMPR : ESPERA_PREG); }
+/* la interfaz avisa de que han terminado de hablar: desde ahí cuenta la espera */
+function opCalla(op, t) {
+  if (desaActivo(op)) { op.desa.t = Math.max(op.desa.t, t); return; }
+  if (puertaPendiente(op)) { op.puerta.t = Math.max(op.puerta.t, t); return; }
+  op.prox = t + (op.fase === 'compresiones' ? TICK_COMPR : ESPERA_PREG);
+}
 
 /* lo que ve ahora el estudiante en su tarjeta del escenario */
 function loQueVes(op) {
-  const tx = escDe(op.escId).txt[op.lang], f = op.fase;
+  const tx = escDe(op.escId).txt[op.lang];
+  if (desaActivo(op)) return {texto: op.desa.paso === 'pulse' ? tx.ves.pulse : tx.ves.desa, evento: true};
+  if (puertaPendiente(op)) return {texto: tx.ves.puerta, evento: true};
   const activo = Object.entries(op.ev).find(([, s]) => !s.resuelto);
   if (activo) return {texto: tx.evento[activo[0]], evento: true};
-  const k = f === 'consciencia' ? 'consciencia' : f === 'respiracion' ? 'respiracion' : ['instrucciones', 'compresiones', 'fin'].includes(f) ? 'compresiones' : 'inicio';
-  return {texto: tx.ves[k], evento: false};
+  return {texto: op.m.tCompr !== null ? tx.ves.compresiones : tx.ves.inicio, evento: false};
 }
 
 /* ── evaluación: datos, no frases (se redactan al pintar, en el idioma activo) ── */
 function evalua(op) {
   const m = op.m, e = escDe(op.escId), it = [];
   it.push({id: 'motivo', ok: m.motivo});
+  it.push({id: 'valoracion', ok: m.noResponde && m.noRespira ? true : m.noResponde || m.noRespira ? 'parcial' : false, falta: [!m.noResponde && 'responde', !m.noRespira && 'respira'].filter(Boolean)});
   it.push({id: 'direccion', ok: m.dirPrimera ? true : m.dirOk ? 'parcial' : false, n: m.dirIntentos, falta: ['calle', 'numero', 'ciudad'].filter(k => !m.dir[k])});
-  it.push({id: 'consciencia', ok: m.consPrimera ? true : m.consOk ? 'parcial' : false});
-  it.push({id: 'respiracion', ok: m.respPrimera ? true : m.respOk ? 'parcial' : false, raro: m.respRaro, boqueadas: e.id === 'calle'});
   it.push({id: 'tRecon', ok: m.tRecon !== null && m.tRecon < OBJ_RECON, t: m.tRecon, obj: OBJ_RECON});
   it.push({id: 'tCompr', ok: m.tCompr !== null && m.tCompr < OBJ_COMPR, t: m.tCompr, obj: OBJ_COMPR});
   it.push({id: 'continuidad', ok: m.tCompr === null ? false : m.interrupciones === 0, n: m.interrupciones});
   for (const ev of e.eventos) { const s = op.ev[ev.id]; it.push({id: 'ev_' + ev.id, ok: !s ? null : !!s.avisado, t: s && s.tAviso != null ? s.tAviso - s.t : null}); }
+  if (e.desa) {
+    const d = op.desa, hecha = !!d && d.paso === 'hecha';
+    it.push({id: 'seguridad', ok: !d || !d.tPulse ? null : d.segErr > 0 ? false : hecha ? true : null, n: d ? d.segErr : 0});
+    it.push({id: 'descarga', ok: !d || !d.tPulse ? null : hecha, t: hecha ? d.tShock - d.tPulse : null});
+  }
+  if (e.puerta) { const p = op.puerta; it.push({id: 'puerta', ok: !p ? null : p.abierta && !p.recordada ? true : p.abierta ? 'parcial' : false, t: p && p.tAb != null ? p.tAb - p.t : null}); }
   if (op.tickN >= 3) it.push({id: 'control', ok: m.controlErr === 0, n: m.controlErr});
   it.push({id: 'cuenta', ok: m.cuenta ? true : null});
   it.push({id: 'duracion', ok: m.terminado === 'auto', t: m.tFin, manual: m.terminado === 'manual'});
   return it;
 }
 /* resumen para el historial */
-const resumenDe = op => ({escId: op.escId, lang: op.lang, dur: op.dur, tRecon: op.m.tRecon, tCompr: op.m.tCompr, ok: evalua(op).filter(i => i.ok === true).length, total: evalua(op).filter(i => i.ok !== null).length});
+const resumenDe = op => { const ev = evalua(op); return {escId: op.escId, lang: op.lang, dur: op.dur, tRecon: op.m.tRecon, tCompr: op.m.tCompr, ok: ev.filter(i => i.ok === true).length, total: ev.filter(i => i.ok !== null).length}; };
 
 /* reproduce una llamada a partir de una lista [[t, texto], …] (ejemplo y pruebas): mismo motor, mismo resultado */
 function reproduce(escId, lang, dur, guion) {
@@ -2128,16 +2179,18 @@ function metronomo(on) {
 function vocesDe(lang) { if (!soporteVoz().tts) return []; const p = VOZ_LANG[lang].toLowerCase(), b = lang; return speechSynthesis.getVoices().filter(v => v.lang && v.lang.toLowerCase().replace('_', '-').startsWith(b)).sort((a, c) => (c.lang.toLowerCase().replace('_', '-') === p) - (a.lang.toLowerCase().replace('_', '-') === p)); }
 function vozElegida(lang, nombre) { const vs = vocesDe(lang); return vs.find(v => v.name === nombre) || vs[0] || null; }
 let _hablando = false;
-/* dice las frases en orden; se resuelve al terminar (con un tope por frase, porque algunos navegadores no avisan del final) */
+/* dice las frases en orden ({desa: '…'} = voz del DESA); se resuelve al terminar (con un tope por frase, porque algunos navegadores no avisan del final) */
 async function habla(frases, lang, nombreVoz) {
-  if (!soporteVoz().tts) { await sleep(frases.join(' ').length * 55 / VEL); return; }
+  const txt = f => typeof f === 'object' ? f.desa : f;
+  if (!soporteVoz().tts) { await sleep(frases.map(txt).join(' ').length * 55 / VEL); return; }
   _hablando = true; speechSynthesis.cancel();
   const v = vozElegida(lang, nombreVoz);
   for (const f of frases) {
     if (!_hablando) break;
     await new Promise(ok => {
-      const u = new SpeechSynthesisUtterance(f); u.lang = VOZ_LANG[lang]; if (v) u.voice = v; u.rate = 1.04;
-      const tope = setTimeout(ok, (2500 + f.length * 95) / VEL);
+      const esDesa = typeof f === 'object', s = txt(f);   // el DESA habla con voz más grave y pausada
+      const u = new SpeechSynthesisUtterance(s); u.lang = VOZ_LANG[lang]; if (v) u.voice = v; u.rate = esDesa ? .9 : 1.04; u.pitch = esDesa ? .5 : 1;
+      const tope = setTimeout(ok, (2500 + s.length * 95) / VEL);
       u.onend = u.onerror = () => { clearTimeout(tope); ok(); };
       speechSynthesis.speak(u);
     });
@@ -2180,19 +2233,20 @@ const STEPS = ['Inicio', 'Preparación', 'Llamada', 'Informe'];
 const NAV = [['Empezar', 'Prueba el ejemplo: no necesita micrófono ni clave.'], ['Siguiente: llamada', 'Elige el escenario y pulsa «Preparar la llamada».'], ['Siguiente: informe', 'Di «comenzamos» para llamar al 112.'], ['Volver al inicio', 'Descarga el informe o repite la llamada.']];
 const RENDER = {0: pintaInicio, 1: pintaPrep, 2: pintaLlamada, 3: pintaInforme};
 const GLOS = [
-  ['¿Qué hace?', 'Simula la llamada al 112 ante una parada cardiorrespiratoria. Un operador te guía por voz mientras haces compresiones en un maniquí y, al terminar, el código evalúa lo que dijiste y cuánto tardaste.'],
+  ['¿Qué hace?', 'Simula la llamada al 112 ante una parada cardiorrespiratoria cuando quien llama es un ciudadano formado en soporte vital básico con DESA. El operador recoge el motivo y la dirección y pasa directamente a las compresiones torácicas; en el polideportivo, el DESA habla y pide la descarga; en el domicilio, el operador pide abrir las puertas antes de que llegue la ambulancia. Al terminar, el código evalúa lo que dijiste y cuánto tardaste.'],
   ['Manos libres', 'Solo hay que tocar la pantalla una vez, en «Preparar la llamada», porque el navegador exige un toque para usar el micrófono y el sonido. Después, di «comenzamos» para llamar y «terminar la simulación» para acabar antes.'],
   ['Turnos de palabra', 'Mientras habla el operador, el micrófono se pausa para que el navegador no transcriba la voz del altavoz. Espera a que termine y responde con frases cortas.'],
   ['Navegador', 'El reconocimiento de voz funciona en Chrome y Edge (escritorio y Android). Safari lo admite de forma irregular y Firefox no lo admite: en ese caso puedes practicar escribiendo.'],
-  ['Operador de guion o con IA', 'Sin clave, el operador sigue un guion basado en el protocolo de RCP guiada por teléfono: corrige si la dirección está incompleta, insiste si dudas y te anima a no parar. Con tu clave de IA, las respuestas las redacta la IA con el mismo protocolo; los recordatorios periódicos y el final siguen siendo del guion, para controlar el tiempo.'],
-  ['Cómo se evalúa', 'Lo hace siempre el código, con las palabras que reconoce el navegador: si explicaste qué pasa, si diste la dirección completa, si confirmaste que no responde y no respira con normalidad, y los tiempos hasta reconocer la parada y hasta la primera compresión. Los objetivos de referencia son los de la American Heart Association para la RCP guiada por teléfono: reconocer la parada en menos de 90 s y primera compresión en menos de 150 s.'],
+  ['Operador de guion o con IA', 'Sin clave, el operador sigue un guion de RCP guiada por teléfono para un reanimador formado: no pregunta por la consciencia, la respiración ni la vía aérea, corrige si la dirección está incompleta y te anima a no parar. Con tu clave de IA, las respuestas las redacta la IA con el mismo protocolo; la voz del DESA, el aviso de las puertas, los recordatorios periódicos y el final siguen siendo del guion, para controlar el tiempo.'],
+  ['Cómo se evalúa', 'Lo hace siempre el código, con las palabras que reconoce el navegador: si explicaste qué pasa e informaste de que no responde y no respira, si diste la dirección completa, los tiempos hasta reconocer la parada y hasta la primera compresión, y si mantuviste las compresiones. Con el DESA, si ordenaste apartarse antes de descargar; en el domicilio, si abriste las puertas y volviste. Los objetivos de tiempo son los de la American Heart Association para la RCP guiada por teléfono: reconocer la parada en menos de 90 s y primera compresión en menos de 150 s.'],
   ['Límites', 'No mide la profundidad ni el ritmo de las compresiones, ni la posición de las manos: para eso hace falta un maniquí con retroalimentación o un instructor. El reconocimiento de voz se equivoca a veces; revisa la transcripción del informe. No sustituye un curso de soporte vital básico.'],
   ['Privacidad', 'Los informes se guardan solo en este navegador. En Chrome y Edge el audio se transcribe en los servidores del navegador. En el modo con IA, lo que dices ya transcrito sale hacia tu proveedor de IA, tras un aviso previo. No digas datos personales reales: usa los del escenario.']
 ];
-const DURS = [120, 180, 240, 300, 360];
+const DUR = 180;   // la llamada dura siempre 3 minutos
 let S = {cfg: {esc: 'casa', dur: 180, modo: 'guion', metro: true, voz: ''}, ult: null, hist: [], esEjemplo: false};
 let ENVIO_OK = false;
 const CAN_NEXT = i => i === 1 && S.cfg.modo === 'ia' && !(getKey() && ENVIO_OK) ? t('Pulsa «Preparar la llamada» para confirmar el uso de la IA.') : i === 2 && L.estado === 'activa' ? t('La llamada sigue en curso: di «terminar la simulación» o pulsa «Colgar».') : true;
+const quienDe = l => l.quien === 'op' ? t('Operador 112') : l.quien === 'desa' ? t('DESA') : t('Tú');
 const tiempo = s => s == null ? '—' : mmss(s);
 
 /* ── 0 · inicio y ejemplo ── */
@@ -2201,11 +2255,11 @@ $('btnStart').onclick = () => go(1);
 document.addEventListener('click', e => { if (e.target.id === 'btnCont') go(3); });
 /* el ejemplo es una llamada reproducida con el mismo motor (no usa la IA ni el micrófono) */
 const EJ = {
-  es: [[4, 'Mi padre se ha desplomado y no responde'], [11, 'En la calle Mayor 14'], [17, 'En Elche'], [24, 'No, no responde'], [34, 'Respira raro, a ratos'], [56, 'Vale, ya, uno dos tres cuatro'], [80, 'uno dos tres cuatro cinco seis'], [96, 'Estoy muy cansado'], [128, 'No'], [150, 'Mi mujer acaba de llegar, puede relevarme']],
-  en: [[4, 'My father has collapsed and is not responding'], [11, 'On Mill Road, number 14'], [17, 'In Oxford'], [24, 'No, he is not responding'], [34, 'He is breathing strangely, sometimes'], [56, 'Okay, yes, one two three four'], [80, 'one two three four five six'], [96, 'I am very tired'], [128, 'No'], [150, 'My wife has just arrived, she can take over']],
-  pt: [[4, 'O meu pai caiu e não responde'], [11, 'Na Rua Direita, 14'], [17, 'Em Coimbra'], [24, 'Não, não responde'], [34, 'Respira de forma estranha, às vezes'], [56, 'Sim, já, um dois três quatro'], [80, 'um dois três quatro cinco seis'], [96, 'Estou muito cansado'], [128, 'Não'], [150, 'A minha mulher acabou de chegar, pode render-me']]
+  es: [[4, 'Mi padre está en el suelo, no responde y no respira'], [11, 'En la calle Mayor 14'], [17, 'En Elche'], [24, 'Sí, ya estoy haciendo compresiones'], [50, 'uno dos tres cuatro cinco seis'], [80, 'Estoy muy cansado'], [142, 'Ya están abiertas, he vuelto']],
+  en: [[4, 'My father is on the floor, not responding and not breathing'], [11, 'On Mill Road, number 14'], [17, 'In Oxford'], [24, 'Yes, I am doing compressions'], [50, 'one two three four five six'], [80, 'I am very tired'], [142, 'They are open, I am back']],
+  pt: [[4, 'O meu pai está no chão, não responde e não respira'], [11, 'Na Rua Direita, 14'], [17, 'Em Coimbra'], [24, 'Sim, já estou a fazer compressões'], [50, 'um dois três quatro cinco seis'], [80, 'Estou muito cansado'], [142, 'Já estão abertas, voltei']]
 };
-function aplicaEjemplo() { const op = reproduce('casa', LANG, 180, EJ[LANG] || EJ.es); op.fecha = new Date().toISOString(); op.modo = 'guion'; S.ult = op; S.esEjemplo = true; }
+function aplicaEjemplo() { const op = reproduce('casa', LANG, DUR, EJ[LANG] || EJ.es); op.fecha = new Date().toISOString(); op.modo = 'guion'; S.ult = op; S.esEjemplo = true; }
 $('btnEjemplo').onclick = () => { aplicaEjemplo(); guarda(); go(3); toast(t('Ejemplo de demostración: una llamada simulada, sin micrófono ni IA')); };
 window.addEventListener('langchange', () => { if (S.esEjemplo) { aplicaEjemplo(); guarda(); } });
 
@@ -2217,7 +2271,6 @@ function pintaPrep() {
   av.textContent = !sv.stt ? t('Este navegador no reconoce la voz. Usa Chrome o Edge para la llamada manos libres; aquí podrás practicar escribiendo lo que dirías.') : !sv.tts ? t('Este navegador no puede leer en voz alta: verás lo que dice el operador, pero no lo oirás.') : '';
   $('escs').innerHTML = ESC.map(e => { const x = e.txt[LANG]; return `<button type="button" class="ll-esc" data-esc="${e.id}" aria-pressed="${S.cfg.esc === e.id}" style="--c:${e.color}"><span class="ll-esc-ico">${ico(e.icono)}</span><b>${esc(x.titulo)}</b><span>${esc(x.breve)}</span></button>`; }).join('');
   $$('#escs [data-esc]').forEach(b => b.onclick = () => { S.cfg.esc = b.dataset.esc; guarda(); pintaPrep(); });
-  $('selDur').innerHTML = DURS.map(d => `<option value="${d}">${esc(t('{0} minutos', d / 60))}</option>`).join(''); $('selDur').value = S.cfg.dur;
   $$('#segModo [data-modo]').forEach(b => b.setAttribute('aria-pressed', S.cfg.modo === b.dataset.modo));
   $('modoHelp').textContent = S.cfg.modo === 'ia' ? t('Usa tu clave ({0}). Cada respuesta tarda uno o dos segundos y tiene un pequeño coste. Elige un modelo rápido.', PROV[getProv()].n) : t('Funciona sin clave y sin coste. Es el modo recomendado para empezar.');
   $('chkMetro').checked = !!S.cfg.metro;
@@ -2229,7 +2282,6 @@ function pintaVoces() {
   const v = vozElegida(LANG, S.cfg.voz); sel.value = v ? v.name : '';
 }
 if (soporteVoz().tts) speechSynthesis.onvoiceschanged = () => { if (step === 1) pintaVoces(); };
-$('selDur').onchange = () => { S.cfg.dur = +$('selDur').value; guarda(); };
 $$('#segModo [data-modo]').forEach(b => b.onclick = () => { S.cfg.modo = b.dataset.modo; guarda(); pintaPrep(); if (S.cfg.modo === 'ia') pideClave(); });
 $('chkMetro').onchange = () => { S.cfg.metro = $('chkMetro').checked; guarda(); };
 $('selVoz').onchange = () => { S.cfg.voz = $('selVoz').value; guarda(); };
@@ -2252,8 +2304,8 @@ $('btnPreparar').onclick = async () => {
   audio();   // el toque del usuario desbloquea el sonido
   if (S.cfg.modo === 'ia') {
     if (!pideClave()) return;
-    const op = nuevoOperador(S.cfg.esc, LANG, S.cfg.dur); opInicio(op);
-    if (!(await pideEnvio(SYS_IA(op, 0) + '\n\n[' + t('Estudiante') + '] ' + t('Mi padre se ha desplomado y no responde')))) return;
+    const op = nuevoOperador(S.cfg.esc, LANG, DUR); opInicio(op);
+    if (!(await pideEnvio(SYS_IA(op, 0) + '\n\n[' + t('Estudiante') + '] ' + t('Mi padre está en el suelo, no responde y no respira')))) return;
   }
   go(2);
 };
@@ -2285,7 +2337,7 @@ function oido(tx) {
 async function comienza() {
   if (L.estado !== 'espera') return;
   L.estado = 'llamando'; if (L.rec) L.rec.pausa();
-  L.op = nuevoOperador(S.cfg.esc, LANG, S.cfg.dur); L.op.modo = S.cfg.modo; L.hist = [];
+  L.op = nuevoOperador(S.cfg.esc, LANG, DUR); L.op.modo = S.cfg.modo; L.hist = [];
   pintaTel(); pintaEscena(); pintaTrans();
   await tonoLlamada(2); if (L.estado !== 'llamando') return;
   L.t0 = performance.now(); L.estado = 'activa';
@@ -2295,14 +2347,16 @@ async function comienza() {
 /* el operador habla: micrófono en pausa, voz, y vuelta a escuchar */
 async function dice(frases) {
   if (!frases.length) return;
-  L.ocupado = true; if (L.rec) L.rec.pausa(); pintaTel(); pintaTrans(); pintaEscena();
+  L.ocupado = true; if (L.rec) L.rec.pausa(); ajustaMetro(); pintaTel(); pintaTrans(); pintaEscena();
   await habla(frases, LANG, S.cfg.voz);
   if (L.op) opCalla(L.op, ahora());
   L.ocupado = false;
-  if (L.estado === 'activa') { if (L.rec) L.rec.sigue(); if (L.op.fase === 'compresiones' && S.cfg.metro && !metronomoOn()) metronomo(true); }
-  pintaTel(); atiende();
+  if (L.estado === 'activa') { if (L.rec) L.rec.sigue(); ajustaMetro(); }
+  pintaTel(); pintaEscena(); atiende();
 }
 const metronomoOn = () => !!_metro;
+/* el metrónomo suena solo mientras se comprime (no durante el análisis ni la descarga del DESA) */
+function ajustaMetro() { const d = L.op && L.op.desa, quieto = d && ['analiza', 'pulse'].includes(d.paso); const debe = L.estado === 'activa' && L.op.fase === 'compresiones' && S.cfg.metro && !quieto; if (debe !== metronomoOn()) metronomo(debe); }
 async function atiende() {
   while (!L.ocupado && L.cola.length && L.estado === 'activa') {
     const tx = L.cola.shift(), t0 = ahora();
@@ -2337,7 +2391,7 @@ $('btnColgar').onclick = () => {
   else if (L.estado === 'llamando') { para(); go(1); }
   else go(1);
 };
-$('btnMetro').onclick = () => { S.cfg.metro = !S.cfg.metro; guarda(); if (L.estado === 'activa' && L.op.fase === 'compresiones') metronomo(S.cfg.metro); pintaTel(); };
+$('btnMetro').onclick = () => { S.cfg.metro = !S.cfg.metro; guarda(); ajustaMetro(); pintaTel(); };
 /* sin micrófono: lo escrito entra por el mismo camino que lo dicho */
 const decirEscrito = () => { const v = $('txtDecir').value.trim(); if (!v) return; $('txtDecir').value = ''; if (L.estado === 'off') arma(); oido(v); };
 $('btnDecir').onclick = decirEscrito; $('txtDecir').addEventListener('keydown', e => { if (e.key === 'Enter') decirEscrito(); });
@@ -2362,37 +2416,37 @@ function pintaEscena() {
 }
 function pintaTrans() {
   const log = L.op ? L.op.log : [];
-  $('llTrans').innerHTML = log.length ? log.map(l => `<div class="ll-msg ${l.quien}"><small>${esc(l.quien === 'op' ? t('Operador 112') : t('Tú'))} · ${mmss(l.t)}</small>${esc(l.texto)}</div>`).join('') : `<p class="empty">${esc(t('Aquí aparecerá la conversación.'))}</p>`;
+  $('llTrans').innerHTML = log.length ? log.map(l => `<div class="ll-msg ${l.quien}"><small>${esc(quienDe(l))} · ${mmss(l.t)}</small>${esc(l.texto)}</div>`).join('') : `<p class="empty">${esc(t('Aquí aparecerá la conversación.'))}</p>`;
   $('llTrans').scrollTop = 1e6;
 }
 
 /* ── operador con IA: la IA redacta la respuesta; el código anota, evalúa y controla el tiempo ── */
-const FASES_IA = ['motivo', 'direccion', 'consciencia', 'respiracion', 'instrucciones', 'compresiones'];
-const SYS_IA = (op, ts) => `Eres un operador del teléfono de emergencias 112 en una SIMULACIÓN para formar a estudiantes. El estudiante está junto a una persona (un maniquí) que puede estar en parada cardiorrespiratoria y te habla por voz; tus respuestas se leerán en voz alta. Tú solo sabes lo que el estudiante te dice.
-Sigue el protocolo de RCP guiada por teléfono, en este orden y sin saltarte pasos:
+const FASES_IA = ['motivo', 'direccion', 'instrucciones', 'compresiones'];
+const SYS_IA = (op, ts) => `Eres un operador del teléfono de emergencias 112 en una SIMULACIÓN para formar a estudiantes. Quien llama es un ciudadano formado en soporte vital básico con DESA, que está junto a una persona (un maniquí) en parada cardiorrespiratoria y te habla por voz; tus respuestas se leerán en voz alta. Tú solo sabes lo que te dice.
+Quien llama ya ha valorado la consciencia y la respiración y ha abierto la vía aérea: NO le preguntes si responde o respira ni le des instrucciones de vía aérea (maniobra frente-mentón).
+Sigue este orden:
 1 motivo: averigua qué ocurre.
 2 direccion: consigue calle, número y población; si falta algo, pídelo. Cuando la tengas, di que la ambulancia ya va de camino.
-3 consciencia: ¿responde si le habla fuerte y le sacude por los hombros?
-4 respiracion: que incline la cabeza hacia atrás, levante la barbilla y mire si respira con normalidad. Las boqueadas o una respiración lenta, ruidosa o rara NO son respiración normal: es una parada.
-5 instrucciones: talón de una mano en el centro del pecho, la otra encima, brazos rectos, empujar fuerte (5-6 cm) y rápido (100-120 por minuto), contando en voz alta; pregunta si ha empezado.
-6 compresiones: anima, corrige si dice que para, recuerda que deje subir el pecho. Si menciona un desfibrilador (DEA): que lo enciendan y sigan sus instrucciones de voz, parches en el pecho desnudo y nadie toca al paciente durante el análisis. Si llega otra persona: relevos cada 2 minutos sin parar las compresiones.
-Corrige como un operador real: si la respuesta es incompleta o dudosa, repite la pregunta; si dice que respira pero describe algo anómalo, explícale que no es normal.
+3 instrucciones: pide que inicie ya las compresiones torácicas (centro del pecho, fuerte y rápido, sin parar), en una sola frase breve, y pregunta si ha empezado. Si ya las está haciendo, anímale a seguir.
+4 compresiones: anima, corrige si dice que para, recuerda que deje subir el pecho y que no pare hasta que lleguen los sanitarios. Si menciona un desfibrilador (DESA), di que lo enciendan y sigan sus instrucciones de voz sin parar las compresiones; la voz del DESA y el aviso de abrir las puertas los pone la simulación, no tú.
+Corrige como un operador real: si la respuesta es incompleta o dudosa, repite la pregunta.
 Estilo: tono calmado y firme, trato de usted, como mucho 2 frases y 30 palabras, una sola pregunta cada vez. No digas que eres una IA. No cierres la llamada: el final lo decide la simulación.
-Devuelve SOLO este JSON: {"decir":"lo que dices","fase":"motivo|direccion|consciencia|respiracion|instrucciones|compresiones"} (fase = paso del protocolo al que pertenece lo que dices).
+Devuelve SOLO este JSON: {"decir":"lo que dices","fase":"motivo|direccion|instrucciones|compresiones"} (fase = paso al que pertenece lo que dices).
 ${INSTR_IDIOMA()}
 Tiempo de llamada: ${mmss(ts)}.`;
-/* convierte el registro en mensajes: el operador es «assistant», el estudiante «user» */
+/* convierte el registro en mensajes: el operador es «assistant», el estudiante «user»; lo que dice el DESA va como nota */
 function mensajesIA(op, ts) {
-  const m = [{role: 'system', content: SYS_IA(op, ts)}, {role: 'user', content: '[' + 'Comienza la llamada' + ']'}];
-  for (const l of op.log) m.push(l.quien === 'op' ? {role: 'assistant', content: JSON.stringify({decir: l.texto, fase: l.fase})} : {role: 'user', content: scrub(l.texto).t});
+  const m = [{role: 'system', content: SYS_IA(op, ts)}, {role: 'user', content: '[Comienza la llamada]'}];
+  for (const l of op.log) m.push(l.quien === 'op' ? {role: 'assistant', content: JSON.stringify({decir: l.texto, fase: l.fase})} : l.quien === 'desa' ? {role: 'user', content: '[El DESA dice: ' + l.texto + ']'} : {role: 'user', content: scrub(l.texto).t});
   return m;
 }
 /* recorta lo que dice la IA: como mucho 3 frases y 320 caracteres */
 function recortaIA(s) { const f = String(s || '').replace(/\s+/g, ' ').trim().match(/[^.!?¿¡]*[¿¡]?[^.!?]*[.!?]+|[^.!?]+$/g) || []; let o = ''; for (const x of f.slice(0, 3)) { if ((o + x).length > 320) break; o += x; } return o.trim() || String(s || '').slice(0, 320).trim(); }
 async function turnoIA(tx, ts) {
-  const op = L.op, n0 = op.log.length;
+  const op = L.op, n0 = op.log.length, guionAntes = desaActivo(op) || puertaPendiente(op);
   const r = opHabla(op, tx, ts);   // anota y prepara la respuesta de reserva del guion
-  if (r.fin || !r.decir.length) return r;
+  /* el DESA, la puerta, el final y los conteos son siempre del guion */
+  if (r.fin || !r.decir.length || guionAntes || desaActivo(op) || r.decir.some(x => typeof x === 'object')) return r;
   const resp = op.log[n0 + 1];
   try {
     const j = await llmJSON(mensajesIA({...op, log: op.log.slice(0, n0 + 1)}, ts), {max: 400});
@@ -2413,14 +2467,15 @@ const FALTA = {calle: 'la calle', numero: 'el número', ciudad: 'la población'}
 function etiqueta(i) {
   switch (i.id) {
     case 'motivo': return i.ok ? t('Explicó qué ocurre (no responde, no respira, se ha desplomado…)') : t('No se detectó que explicara qué ocurre: dilo nada más empezar («no responde», «no respira»).');
+    case 'valoracion': return i.ok === true ? t('Informó de que no responde y no respira') : i.ok ? (i.falta.includes('respira') ? t('Dijo que no responde, pero no que no respira: informa de las dos cosas') : t('Dijo que no respira, pero no que no responde: informa de las dos cosas')) : t('No informó de que no responde ni de que no respira');
     case 'direccion': return i.ok === true ? t('Dirección completa a la primera: calle, número y población') : i.ok ? t('Dirección completa, pero en varias respuestas ({0}): dila entera de una vez', i.n) : t('Dirección incompleta: faltó {0}', i.falta.map(k => t(FALTA[k])).join(', '));
-    case 'consciencia': return i.ok === true ? t('Confirmó que no responde') : i.ok ? t('Dudó si respondía: compruébalo hablándole fuerte y sacudiéndole los hombros') : t('No llegó a confirmar si respondía');
-    case 'respiracion': return i.ok === true ? (i.raro ? t('Reconoció que no respira con normalidad y describió una respiración anómala') : t('Reconoció que no respira con normalidad')) : i.ok ? (i.boqueadas ? t('Dijo que respiraba: las boqueadas no son una respiración normal') : t('Dudó sobre la respiración')) : t('No llegó a confirmar si respiraba con normalidad');
     case 'tRecon': return i.t == null ? t('No se llegó a reconocer la parada') : t('Parada reconocida a los {0} (objetivo: menos de {1})', mmss(i.t), mmss(i.obj));
     case 'tCompr': return i.t == null ? t('No se detectó el inicio de las compresiones') : t('Primera compresión a los {0} (objetivo: menos de {1})', mmss(i.t), mmss(i.obj));
     case 'continuidad': return i.ok ? t('No dijo en ningún momento que paraba las compresiones') : i.n ? t('Dijo que paraba las compresiones (veces: {0}): no pares hasta que lleguen los sanitarios', i.n) : t('No hay compresiones registradas');
-    case 'ev_dea': return i.ok === true ? t('Avisó de la llegada del desfibrilador ({0} s después)', Math.round(i.t || 0)) : i.ok === false ? t('No avisó de que había llegado el desfibrilador: el operador tuvo que preguntarlo') : t('El desfibrilador no llegó a aparecer (la llamada terminó antes)');
-    case 'ev_relevo': return i.ok === true ? t('Avisó de que alguien podía relevarle') : i.ok === false ? t('No avisó de que había llegado alguien que podía relevarle') : t('El relevo no llegó a aparecer (la llamada terminó antes)');
+    case 'ev_dea': return i.ok === true ? t('Avisó de la llegada del DESA ({0} s después)', Math.round(i.t || 0)) : i.ok === false ? t('No avisó de que había llegado el DESA: el operador tuvo que preguntarlo') : t('El DESA no llegó a aparecer (la llamada terminó antes)');
+    case 'seguridad': return i.ok === true ? t('Antes de descargar, ordenó apartarse y comprobó que nadie tocaba a la víctima') : i.ok === false ? t('Intentó descargar sin la medida de seguridad (veces: {0}): di «¡apartaos!» y comprueba que nadie toca a la víctima', i.n) : t('No se llegó a la descarga del DESA');
+    case 'descarga': return i.ok === true ? t('Descarga administrada {0} s después de que la indicara el DESA', Math.round(i.t)) : i.ok === false ? t('El DESA indicó la descarga, pero no se llegó a administrar') : t('El DESA no llegó a indicar la descarga (la llamada terminó antes)');
+    case 'puerta': return i.ok === true ? t('Abrió las puertas y volvió a las compresiones ({0} s)', Math.round(i.t)) : i.ok ? t('Abrió las puertas, pero el operador tuvo que recordárselo') : i.ok === false ? t('No confirmó que hubiera abierto las puertas y vuelto a las compresiones') : t('El aviso de abrir las puertas no llegó (la llamada terminó antes)');
     case 'control': return i.ok ? t('Respondió bien a «¿ha empezado a respirar con normalidad?» durante la reanimación') : t('Dijo que respiraba con normalidad durante la reanimación (veces: {0})', i.n);
     case 'cuenta': return i.ok ? t('Contó en voz alta: ayuda a mantener el ritmo') : t('No se detectó que contara en voz alta (opcional)');
     case 'duracion': return i.ok ? t('Mantuvo la llamada hasta que llegó la ambulancia ({0})', tiempo(i.t)) : i.manual ? t('Terminó la simulación antes de que llegara la ambulancia ({0})', tiempo(i.t)) : t('La llamada no llegó al final');
@@ -2444,20 +2499,20 @@ function pintaInforme() {
     </div>
     <ul class="ll-check">${ev.map(i => `<li class="${claseDe(i.ok)}"><span class="ll-m" aria-hidden="true">${marca(i.ok)}</span>${esc(etiqueta(i))}</li>`).join('')}</ul>
     <p class="help">${esc(t('✓ conseguido · ~ a medias · ✗ no conseguido · – informativo. Los tiempos cuentan desde que contesta el operador.'))}</p></div>
-  <div class="card"><h3>${esc(t('Conversación'))}</h3><div class="ll-trans ll-trans-inf">${op.log.map(l => `<div class="ll-msg ${l.quien}"><small>${esc(l.quien === 'op' ? t('Operador 112') : t('Tú'))} · ${mmss(l.t)}${l.fuente === 'ia' ? ' · IA' : ''}</small>${esc(l.texto)}</div>`).join('')}</div></div>`;
+  <div class="card"><h3>${esc(t('Conversación'))}</h3><div class="ll-trans ll-trans-inf">${op.log.map(l => `<div class="ll-msg ${l.quien}"><small>${esc(quienDe(l))} · ${mmss(l.t)}${l.fuente === 'ia' ? ' · IA' : ''}</small>${esc(l.texto)}</div>`).join('')}</div></div>`;
   const h = (S.hist || []);
   $('historial').innerHTML = h.length ? `<h3>${esc(t('Tus llamadas en este navegador'))}</h3><div class="table-wrap"><table><thead><tr><th>${esc(t('Fecha'))}</th><th>${esc(t('Escenario'))}</th><th>${esc(t('Reconocimiento'))}</th><th>${esc(t('Primera compresión'))}</th><th>${esc(t('Puntos'))}</th></tr></thead><tbody>${h.map(s => `<tr><td>${esc(new Date(s.fecha).toLocaleString(locale(), {dateStyle: 'short', timeStyle: 'short'}))}</td><td>${esc(escDe(s.escId).txt[LANG].titulo)}</td><td>${tiempo(s.tRecon)}</td><td>${tiempo(s.tCompr)}</td><td>${s.ok}/${s.total}</td></tr>`).join('')}</tbody></table></div>` : '';
 }
 const informeMd = op => {
   const ev = evalua(op), x = escDe(op.escId).txt[LANG];
-  return `## ${t('Escenario')}: ${x.titulo}\n${x.situacion}\n\n## ${t('Resultado')}\n${ev.map(i => `- ${marca(i.ok)} ${etiqueta(i)}`).join('\n')}\n\n## ${t('Conversación')}\n${op.log.map(l => `- **${mmss(l.t)} · ${l.quien === 'op' ? t('Operador 112') : t('Tú')}:** ${l.texto}`).join('\n')}`;
+  return `## ${t('Escenario')}: ${x.titulo}\n${x.situacion}\n\n## ${t('Resultado')}\n${ev.map(i => `- ${marca(i.ok)} ${etiqueta(i)}`).join('\n')}\n\n## ${t('Conversación')}\n${op.log.map(l => `- **${mmss(l.t)} · ${quienDe(l)}:** ${l.texto}`).join('\n')}`;
 };
 $('btnWord').onclick = async () => { if (!S.ult) return toast(t('Aún no hay ninguna llamada')); try { dl('llamada112.docx', await wordDeMarkdown(informeMd(S.ult), {titulo: t('Informe de la llamada al 112'), subtitulo: new Date(S.ult.fecha).toLocaleString(locale()), pie: t('Generado con {0}. Evaluación calculada por el código a partir de la transcripción del navegador; no mide la calidad de las compresiones.', APP_NAME)})); } catch (e) { toast(e.message, 7000); } };
-$('btnCsv').onclick = () => { if (!S.ult) return toast(t('Aún no hay ninguna llamada')); dl('llamada112.csv', csvDe([t('tiempo'), t('quien'), t('texto'), t('fase')], S.ult.log.map(l => [mmss(l.t), l.quien === 'op' ? t('operador') : t('estudiante'), l.texto, l.fase])), 'text/csv;charset=utf-8'); };
+$('btnCsv').onclick = () => { if (!S.ult) return toast(t('Aún no hay ninguna llamada')); dl('llamada112.csv', csvDe([t('tiempo'), t('quien'), t('texto'), t('fase')], S.ult.log.map(l => [mmss(l.t), l.quien === 'op' ? t('operador') : l.quien === 'desa' ? t('DESA') : t('estudiante'), l.texto, l.fase])), 'text/csv;charset=utf-8'); };
 $('btnOtra').onclick = () => go(1);
 
 /* ── arranque ── */
-(async () => { const p = await cargaEstado(); if (p) S = {...S, ...p, cfg: {...S.cfg, ...(p.cfg || {})}}; iniciaUI(); if (S.esEjemplo) aplicaEjemplo(); go(0); })();
+(async () => { const p = await cargaEstado(); if (p) S = {...S, ...p, cfg: {...S.cfg, ...(p.cfg || {})}}; S.cfg.dur = DUR; if (!ESC.some(e => e.id === S.cfg.esc)) S.cfg.esc = 'casa'; S.hist = (S.hist || []).filter(h => ESC.some(e => e.id === h.escId)); if (S.ult && !ESC.some(e => e.id === S.ult.escId)) S.ult = null; iniciaUI(); if (S.esEjemplo) aplicaEjemplo(); go(0); })();
 
 </script>
 </body></html>

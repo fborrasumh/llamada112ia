@@ -11,8 +11,8 @@ authors:
     given-names: "Juan Manuel"
     affiliation: "Universidad Miguel Hernández de Elche"
 doi: "10.5281/zenodo.24209094"
-version: "1.0.0"
-date-released: "2026-11-13"
+version: "1.1.0"
+date-released: "2026-11-19"
 url: "https://fborrasumh.github.io/llamada112ia/"
 repository-code: "https://github.com/fborrasumh/llamada112ia"
 license: MIT
